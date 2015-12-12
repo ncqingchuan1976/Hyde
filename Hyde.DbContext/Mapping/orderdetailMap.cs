@@ -7,7 +7,7 @@ using System.Data.Entity.ModelConfiguration;
 using System.ComponentModel.DataAnnotations.Schema;
 using Hyde.Domain.Model;
 
-namespace Hyde.DataBase.Mapping
+namespace Hyde.Context.Mapping
 {
     public class orderdetailMap : EntityTypeConfiguration<orderdetailDto>
     {

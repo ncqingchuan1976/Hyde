@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration;
 using Hyde.Domain.Model;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace Hyde.DataBase.Mapping
+namespace Hyde.Context.Mapping
 {
     public class brandMap : EntityTypeConfiguration<brandDto>
     {

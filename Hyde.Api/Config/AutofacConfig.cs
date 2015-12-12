@@ -7,5 +7,9 @@ namespace Hyde.Api.Config
 {
     public class AutofacConfig
     {
+        public static void AutofacRegsiter()
+        {
+
+        }
     }
 }

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
-
+using Hyde.Api.Config;
+using System.Web.Http;
 namespace Hyde.Api.Host
 {
     public class Global : System.Web.HttpApplication
@@ -12,6 +13,9 @@ namespace Hyde.Api.Host
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            var config = GlobalConfiguration.Configuration;
+
+            RouteConfig.RouteRegister(config);
 
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.Entity.ModelConfiguration;
 using Hyde.Domain;
 
-namespace Hyde.DataBase.Mapping
+namespace Hyde.Context.Mapping
 {
     public class addressMap : ComplexTypeConfiguration<address>
     {

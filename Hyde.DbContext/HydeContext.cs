@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Hyde.DataBase.Mapping;
-namespace Hyde.DataBase
+using Hyde.Context.Mapping;
+namespace Hyde.Context
 {
     public class HydeContext : DbContext
     {
