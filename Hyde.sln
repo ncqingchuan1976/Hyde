@@ -3,7 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Domain", "Hyde.Domain\Hyde.Domain.csproj", "{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
