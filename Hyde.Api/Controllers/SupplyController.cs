@@ -4,36 +4,26 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
+using Hyde.Domain.Model;
+using Hyde.Repository;
 namespace Hyde.Api.Host.Controllers
 {
     public class SupplyController : ApiController
     {
-        // GET: api/Supply
-        public IEnumerable<string> Get()
+
+
+        private readonly IRepository<supplyDto> _SupplyRepo;
+
+        public SupplyController(IRepository<supplyDto> SupplyRepo)
         {
-            return new string[] { "value1", "value2" };
+            _SupplyRepo = SupplyRepo;
         }
 
-        // GET: api/Supply/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        [HttpGet]
 
-        // POST: api/Supply
-        public void Post([FromBody]string value)
+        public List<supplyDto> GetSupplyList()
         {
-        }
-
-        // PUT: api/Supply/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Supply/5
-        public void Delete(int id)
-        {
+            return _SupplyRepo.Find().ToList();
         }
     }
 }

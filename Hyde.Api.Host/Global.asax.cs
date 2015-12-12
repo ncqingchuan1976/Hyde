@@ -17,6 +17,8 @@ namespace Hyde.Api.Host
 
             RouteConfig.RouteRegister(config);
 
+            AutofacConfig.AutofacRegsiter(config);
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

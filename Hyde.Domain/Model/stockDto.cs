@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hyde.Domain;
-using Hyde.Common;
+
 namespace Hyde.Domain.Model
 {
     public class stockDto : IEntityKey

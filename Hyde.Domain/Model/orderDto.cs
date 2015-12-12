@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hyde.Common;
+
 using Hyde.Domain;
 namespace Hyde.Domain.Model
 {
@@ -24,7 +24,7 @@ namespace Hyde.Domain.Model
 
         public int customerid { get; set; }
 
-        public ORDER_STATUS orderstatus { get; set; }
+        public ORDER_STATE orderstatus { get; set; }
 
         public string code { get; set; }
 
