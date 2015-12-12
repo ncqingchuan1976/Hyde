@@ -78,8 +78,11 @@
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Controllers\SupplyController.cs" />
+    <Compile Include="Models\OperaterResult.cs" />
+    <Compile Include="Models\Page.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ISupplyService.cs" />
+    <Compile Include="Services\SupplyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -105,6 +108,10 @@
     <ProjectReference Include="..\Hyde.Repository\Hyde.Repository.csproj">
       <Project>{a152f4fb-f658-4b22-b985-39769679b312}</Project>
       <Name>Hyde.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PagedList\PagedList.csproj">
+      <Project>{da52d7c3-b871-48ec-b009-ac782ad50266}</Project>
+      <Name>PagedList</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

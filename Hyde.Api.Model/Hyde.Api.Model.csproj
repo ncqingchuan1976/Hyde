@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,9 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestCommands\IRequestCommand.cs" />
+    <Compile Include="RequestCommands\PageCommand.cs" />
+    <Compile Include="RequestModels\SupplyBase.cs" />
+    <Compile Include="Validation\MaximumAttribute.cs" />
+    <Compile Include="Validation\MinimumAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="RequestCommand\" />
+    <ProjectReference Include="..\Hyde.Domain\Hyde.Domain.csproj">
+      <Project>{98832d1f-ac7a-4829-b33a-acf415c8ceac}</Project>
+      <Name>Hyde.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

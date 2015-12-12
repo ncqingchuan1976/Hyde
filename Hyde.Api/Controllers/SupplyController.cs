@@ -6,24 +6,40 @@ using System.Net.Http;
 using System.Web.Http;
 using Hyde.Domain.Model;
 using Hyde.Repository;
+using Hyde.Api.Services;
+using Hyde.Api.Models;
+using Hyde.Api.Model.RequestCommands;
+using Hyde.Api.Model.RequestModels;
 namespace Hyde.Api.Host.Controllers
 {
     public class SupplyController : ApiController
     {
 
 
-        private readonly IRepository<supplyDto> _SupplyRepo;
+        private readonly ISupplyService service;
 
-        public SupplyController(IRepository<supplyDto> SupplyRepo)
+        public SupplyController(ISupplyService Service)
         {
-            _SupplyRepo = SupplyRepo;
+            service = Service;
         }
 
         [HttpGet]
-
-        public List<supplyDto> GetSupplyList()
+        public Page<SupplyAdd> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
         {
-            return _SupplyRepo.Find().ToList();
+            var page = Page ?? new PageCommand();
+
+            var result = service.GetSupplyList(page, Name, Code, ShuOut);
+
+            return new Page<SupplyAdd>()
+            {
+                PageIndex = result.PageNumber,
+                PageSize = result.PageSize,
+                TotalItem = result.TotalItemCount,
+                ToTalPage = result.PageCount,
+                Entities = result.Select(t => t.Mapper())
+            };
+
+
         }
     }
 }
