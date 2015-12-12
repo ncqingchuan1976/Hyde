@@ -22,10 +22,10 @@ namespace Hyde.Repository
         /// </summary>
         /// <returns>返回受影响的行数</returns>
         int Save();
-
+        
         void Rollback(DbTransaction transaction);
 
-        DbContext CurrentDbContext { get; }
+        DbContext Currentcontext { get; }
 
         int ExecuteSqlCommand(string sql, params object[] parameters);
     }

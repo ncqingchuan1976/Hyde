@@ -78,5 +78,6 @@ namespace Hyde.Repository
 
         DbRawSqlQuery<T> SqlQuery(string sql, params object[] parameters);
 
+        DbEntityEntry<T> Entry(T item);
     }
 }

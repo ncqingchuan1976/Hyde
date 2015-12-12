@@ -40,13 +40,13 @@ namespace Hyde.Repository
 
         public void ChangeState(T item, EntityState state)
         {
-            var entry = _unitofwork.CurrentDbContext.Entry(item);
+            var entry = _unitofwork.Currentcontext.Entry(item);
             entry.State = state;
         }
 
         public T Create(T item)
         {
-            throw new NotImplementedException();
+            return Set().Create();
         }
 
         public void Dispose()
@@ -86,14 +86,14 @@ namespace Hyde.Repository
 
         private DbSet<T> Set()
         {
-            return _unitofwork.CurrentDbContext.Set<T>();
+            return _unitofwork.Currentcontext.Set<T>();
         }
 
         private IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
         {
             var query = Set().AsQueryable<T>();
 
-            if (includes != null && includes.Length != 0)
+            if (includes != null)
             {
                 foreach (var include in includes)
                 {
@@ -118,7 +118,7 @@ namespace Hyde.Repository
         {
             ChangeState(item, EntityState.Unchanged);
 
-            var entry = UnitOfWork.CurrentDbContext.Entry(item);
+            var entry = Entry(item);
 
             if (properties != null)
             {
@@ -139,6 +139,11 @@ namespace Hyde.Repository
         public void Remove(IEnumerable<T> items)
         {
             Set().RemoveRange(items);
+        }
+
+        public DbEntityEntry<T> Entry(T item)
+        {
+            return _unitofwork.Currentcontext.Entry(item);
         }
     }
 }

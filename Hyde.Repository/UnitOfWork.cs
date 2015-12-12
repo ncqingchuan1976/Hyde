@@ -23,7 +23,7 @@ namespace Hyde.Repository
             _dbcontext = dbcontext;
         }
 
-        public DbContext CurrentDbContext
+        public DbContext Currentcontext
         {
             get
             {

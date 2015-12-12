@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api", "Hyde.Api\Hyde.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Repository", "Hyde.Repository\Hyde.Repository.csproj", "{A152F4FB-F658-4B22-B985-39769679B312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.DbContext", "Hyde.DbContext\Hyde.DbContext.csproj", "{4BA942A4-1901-4D5A-9734-E6EE6D93E167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Context", "Hyde.DbContext\Hyde.Context.csproj", "{4BA942A4-1901-4D5A-9734-E6EE6D93E167}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api.Model", "Hyde.Api.Model\Hyde.Api.Model.csproj", "{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}"
 EndProject
