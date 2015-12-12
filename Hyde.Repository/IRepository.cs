@@ -18,6 +18,8 @@ namespace Hyde.Repository
 
         void Add(IEnumerable<T> items);
 
+        void Edit(T item, params string[] properties);
+
         /// <summary>
         /// 从实体集中移除一个实体
         /// </summary>

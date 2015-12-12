@@ -113,5 +113,27 @@ namespace Hyde.Repository
         {
             Set().AddRange(items);
         }
+
+        public void Edit(T item, params string[] properties)
+        {
+            ChangeState(item, EntityState.Unchanged);
+
+            var entry = UnitOfWork.CurrentDbContext.Entry(item);
+
+            if (properties != null )
+            {
+                if (properties.Length != 0)
+                {
+                    foreach (var property in properties)
+                    {
+                        entry.Property(property).IsModified = true;
+                    }
+                }
+                else
+                {
+                    entry.State = EntityState.Modified;
+                }
+            }
+        }
     }
 }
