@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Domain", "Hyde.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api", "Hyde.Api\Hyde.Api.csproj", "{F0686764-64BA-4684-BBD7-8289C67491C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Host", "Hyde.Host\Hyde.Host.csproj", "{9035457E-ABD4-4A77-8617-392A5BD0963D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
