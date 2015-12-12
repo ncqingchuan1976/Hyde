@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Hyde.Api.Host.Config
+namespace Hyde.Api.Config
 {
     public class WebApiConfig
     {

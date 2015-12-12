@@ -4,26 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
-namespace Hyde.Context
+using Hyde.DataBase.Mapping;
+namespace Hyde.DataBase
 {
     public class HydeContext : DbContext
     {
+
         static HydeContext()
         {
             Database.SetInitializer<HydeContext>(null);
         }
 
         public HydeContext()
-            : base("Name=HydeContext")
+            : base("name=HydeContext")
         {
-            Configuration.ValidateOnSaveEnabled = false;
+            //this.Configuration.AutoDetectChangesEnabled = false;
+            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.ValidateOnSaveEnabled = false;
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.AddFromAssembly(System.Reflection.Assembly.GetExecutingAssembly());
+
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
     }

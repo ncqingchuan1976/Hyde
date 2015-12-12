@@ -50,6 +50,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HydeContext.cs" />
+    <Compile Include="Mapping\addressMap.cs" />
+    <Compile Include="Mapping\areaMap.cs" />
+    <Compile Include="Mapping\brandMap.cs" />
+    <Compile Include="Mapping\categoryMap.cs" />
+    <Compile Include="Mapping\customeraddressMap.cs" />
+    <Compile Include="Mapping\customerMap.cs" />
+    <Compile Include="Mapping\genderMap.cs" />
+    <Compile Include="Mapping\orderdetailMap.cs" />
+    <Compile Include="Mapping\orderMap.cs" />
+    <Compile Include="Mapping\orderpayMap.cs" />
+    <Compile Include="Mapping\paymentMap.cs" />
+    <Compile Include="Mapping\productimageMap.cs" />
+    <Compile Include="Mapping\productMap.cs" />
+    <Compile Include="Mapping\rangeMap.cs" />
+    <Compile Include="Mapping\sizeMap.cs" />
+    <Compile Include="Mapping\skuMap.cs" />
+    <Compile Include="Mapping\stockMap.cs" />
+    <Compile Include="Mapping\supplyMap.cs" />
+    <Compile Include="Mapping\v_stockMap.cs" />
+    <Compile Include="Mapping\warehouseMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Routing;
-namespace Hyde.Api.Host.Config
+namespace Hyde.Api.Config
 {
     public class RouteConfig
     {
