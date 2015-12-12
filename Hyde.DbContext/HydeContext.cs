@@ -19,7 +19,7 @@ namespace Hyde.Context
         public HydeContext()
             : base("name=HydeContext")
         {
-            //this.Configuration.AutoDetectChangesEnabled = false;
+            this.Configuration.AutoDetectChangesEnabled = false;
             this.Configuration.LazyLoadingEnabled = false;
             this.Configuration.ValidateOnSaveEnabled = false;
             this.Configuration.ProxyCreationEnabled = false;

@@ -38,7 +38,19 @@ namespace Hyde.Api.Host.Controllers
                 ToTalPage = result.PageCount,
                 Entities = result.Select(t => t.Mapper())
             };
+        }
 
+        public HttpResponseMessage AddSupply(SupplyEdit Item)
+        {
+            var Dto = Item.Mapper();
+
+            var result = service.AddSupply(Dto);
+
+            if (!result.IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
 
         }
     }

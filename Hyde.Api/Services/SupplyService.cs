@@ -10,6 +10,7 @@ using Hyde.Api.Model.RequestCommands;
 using Hyde.Repository;
 using Hyde.Domain.Model;
 using PagedList;
+using System.Data.Entity;
 namespace Hyde.Api.Services
 {
     public class SupplyService : ISupplyService
@@ -34,7 +35,7 @@ namespace Hyde.Api.Services
 
         public IPagedList<supplyDto> GetSupplyList(PageCommand Page, string Name = null, string Code = null, bool? ShutOut = default(bool?))
         {
-           
+
             var query = _SupplyRepo.Find();
 
             if (!string.IsNullOrWhiteSpace(Name))
@@ -46,9 +47,7 @@ namespace Hyde.Api.Services
             if (ShutOut.HasValue)
                 query = query.Where(t => t.shutout == ShutOut);
 
-            return query.OrderBy(t => t.key).ToPagedList(Page.PageIndex, Page.PageSize);
-
-           
+            return query.OrderBy(t => t.key).AsNoTracking().ToPagedList(Page.PageIndex, Page.PageSize);
 
         }
     }
