@@ -17,6 +17,7 @@ namespace Hyde.Api.Services
     {
 
         readonly IRepository<supplyDto> _SupplyRepo;
+
         public SupplyService(IRepository<supplyDto> SupplyRepo)
         {
             _SupplyRepo = SupplyRepo;

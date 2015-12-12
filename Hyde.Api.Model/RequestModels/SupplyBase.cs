@@ -8,7 +8,10 @@ using Hyde.Api.Model.Validation;
 using Hyde.Domain.Model;
 namespace Hyde.Api.Model.RequestModels
 {
-    public class SupplyBase
+    /// <summary>
+    /// 供应商模型
+    /// </summary>
+    public abstract class SupplyBase
     {
         [Required]
         [StringLength(30)]
@@ -35,6 +38,7 @@ namespace Hyde.Api.Model.RequestModels
 
     public class SupplyAdd : SupplyBase
     {
+        [Display(Name = "供应商编码")]
         public int SupplyID { get; set; }
     }
 
@@ -49,29 +53,33 @@ namespace Hyde.Api.Model.RequestModels
         {
             if (Item == null)
                 return null;
-            SupplyAdd Result = new SupplyAdd();
 
-            Result.SupplyID = Item.key;
-            Result.Name = Item.name;
-            Result.ShutOut = Item.shutout;
-            Result.PriorLevel = Item.priorlevel;
-            Result.Remark = Item.remark;
-            Result.Code = Item.code;
-            return Result;
+            return new SupplyAdd()
+            {
+                SupplyID = Item.key,
+                Name = Item.name,
+                ShutOut = Item.shutout,
+                PriorLevel = Item.priorlevel,
+                Remark = Item.remark,
+                Code = Item.code
+            };
+
         }
 
-        public static supplyDto Mapper(this SupplyBase Item)
+        public static supplyDto Mapper(this SupplyEdit Item)
         {
             if (Item == null)
                 return null;
 
-            supplyDto Result = new supplyDto();
-            Result.name = Item.Name;
-            Result.shutout = Item.ShutOut;
-            Result.priorlevel = Item.PriorLevel;
-            Result.remark = Item.Remark;
-            Result.code = Item.Code;
-            return Result;
+            return new supplyDto()
+            {
+                name = Item.Name,
+                shutout = Item.ShutOut,
+                priorlevel = Item.PriorLevel,
+                remark = Item.Remark,
+                code = Item.Code
+            };
+
         }
     }
 }
