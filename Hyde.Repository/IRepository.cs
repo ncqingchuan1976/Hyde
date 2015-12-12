@@ -25,6 +25,9 @@ namespace Hyde.Repository
         /// </summary>
         /// <param name="item"></param>
         void Remove(T item);
+
+        void Remove(IEnumerable<T> items);
+
         /// <summary>
         /// 修改实体集合中的一个实体
         /// </summary>

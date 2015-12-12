@@ -120,7 +120,7 @@ namespace Hyde.Repository
 
             var entry = UnitOfWork.CurrentDbContext.Entry(item);
 
-            if (properties != null )
+            if (properties != null)
             {
                 if (properties.Length != 0)
                 {
@@ -134,6 +134,11 @@ namespace Hyde.Repository
                     entry.State = EntityState.Modified;
                 }
             }
+        }
+
+        public void Remove(IEnumerable<T> items)
+        {
+            Set().RemoveRange(items);
         }
     }
 }
