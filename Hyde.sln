@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Repository", "Hyde.Rep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.DbContext", "Hyde.DbContext\Hyde.DbContext.csproj", "{4BA942A4-1901-4D5A-9734-E6EE6D93E167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagedList", "..\..\Visual C#\PagedList-master\src\PagedList\PagedList.csproj", "{DA52D7C3-B871-48EC-B009-AC782AD50266}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,10 +39,6 @@ Global
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA52D7C3-B871-48EC-B009-AC782AD50266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA52D7C3-B871-48EC-B009-AC782AD50266}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA52D7C3-B871-48EC-B009-AC782AD50266}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA52D7C3-B871-48EC-B009-AC782AD50266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
