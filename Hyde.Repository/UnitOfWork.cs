@@ -43,7 +43,8 @@ namespace Hyde.Repository
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            if (_dbcontext != null)
+                _dbcontext.Dispose();
         }
 
         public int ExecuteSqlCommand(string sql, params object[] parameters)
