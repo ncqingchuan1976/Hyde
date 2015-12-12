@@ -7,11 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Domain", "Hyde.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api", "Hyde.Api\Hyde.Api.csproj", "{F0686764-64BA-4684-BBD7-8289C67491C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Host", "Hyde.Host\Hyde.Host.csproj", "{9035457E-ABD4-4A77-8617-392A5BD0963D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Repository", "Hyde.Repository\Hyde.Repository.csproj", "{A152F4FB-F658-4B22-B985-39769679B312}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.DbContext", "Hyde.DbContext\Hyde.DbContext.csproj", "{4BA942A4-1901-4D5A-9734-E6EE6D93E167}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api.Model", "Hyde.Api.Model\Hyde.Api.Model.csproj", "{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api.Host", "Hyde.Api.Host\Hyde.Api.Host.csproj", "{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +29,6 @@ Global
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0686764-64BA-4684-BBD7-8289C67491C9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9035457E-ABD4-4A77-8617-392A5BD0963D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A152F4FB-F658-4B22-B985-39769679B312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A152F4FB-F658-4B22-B985-39769679B312}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A152F4FB-F658-4B22-B985-39769679B312}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +37,14 @@ Global
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
