@@ -55,11 +55,6 @@ namespace Hyde.Repository
                 _unitofwork.Dispose();
         }
 
-        public void Edit(T item)
-        {
-            throw new NotImplementedException();
-        }
-
         public IQueryable<T> Find(Expression<Func<T, bool>> condition = null, params Expression<Func<T, object>>[] includes)
         {
             var query = Include(includes);
@@ -144,6 +139,12 @@ namespace Hyde.Repository
         public DbEntityEntry<T> Entry(T item)
         {
             return _unitofwork.Currentcontext.Entry(item);
+        }
+
+        public void Delete(T item)
+        {
+            ChangeState(item, EntityState.Unchanged);
+            Remove(item);
         }
     }
 }

@@ -23,18 +23,44 @@ namespace Hyde.Api.Services
             _SupplyRepo = SupplyRepo;
         }
 
-        public OperateReult<supplyDto> AddSupply(supplyDto item)
+        public OperationResult<supplyDto> AddSupply(supplyDto item)
         {
 
             _SupplyRepo.Add(item);
 
             _SupplyRepo.UnitOfWork.Save();
 
-            return new OperateReult<supplyDto>(true);
+            return new OperationResult<supplyDto>(true) { Entity = item };
 
         }
 
-        public IPagedList<supplyDto> GetSupplyList(PageCommand Page, string Name = null, string Code = null, bool? ShutOut = default(bool?))
+        public OperationResult<supplyDto> DeleteSupply(int Key)
+        {
+
+            var Dto = FindSingle(Key);
+            if (Dto == null)
+            {
+                return new OperationResult<supplyDto>(false);
+            }
+
+            _SupplyRepo.Remove(Dto);
+            _SupplyRepo.UnitOfWork.Save();
+            return new OperationResult<supplyDto>(true) { Entity = Dto };
+        }
+
+        public OperationResult<supplyDto> EditSupply(supplyDto item)
+        {
+            _SupplyRepo.ChangeState(item, EntityState.Unchanged);
+            _SupplyRepo.Edit(item, nameof(item.name), nameof(item.remark), nameof(item.shutout), nameof(item.priorlevel));
+            return new OperationResult<supplyDto>(true);
+        }
+
+        public supplyDto FindSingle(int Key)
+        {
+            return _SupplyRepo.FindSingle(Key);
+        }
+
+        public IPagedList<supplyDto> GetSupplyList(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = default(bool?))
         {
 
             var query = _SupplyRepo.Find();
@@ -48,8 +74,10 @@ namespace Hyde.Api.Services
             if (ShutOut.HasValue)
                 query = query.Where(t => t.shutout == ShutOut);
 
-            return query.OrderBy(t => t.key).AsNoTracking().ToPagedList(Page.PageIndex, Page.PageSize);
+            return query.OrderBy(t => t.key).AsNoTracking().ToPagedList(PageIndex, PageSize);
 
         }
+
+
     }
 }

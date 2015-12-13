@@ -28,7 +28,7 @@ namespace Hyde.Api.Host.Controllers
         {
             var page = Page ?? new PageCommand();
 
-            var result = service.GetSupplyList(page, Name, Code, ShuOut);
+            var result = service.GetSupplyList(page.PageIndex, page.PageSize, Name, Code, ShuOut);
 
             return new Page<SupplyAdd>()
             {
@@ -52,6 +52,28 @@ namespace Hyde.Api.Host.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
 
+        }
+
+        public HttpResponseMessage EditSupply(int Key, SupplyEdit Item)
+        {
+            var Dto = Item.Mapper();
+            Dto.key = Key;
+            if (!service.EditSupply(Dto).IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage DeleteSupply(int Key)
+        {
+            if (!service.DeleteSupply(Key).IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
 }

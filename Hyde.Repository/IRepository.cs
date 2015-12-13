@@ -23,6 +23,9 @@ namespace Hyde.Repository
 
         void Edit(T item, params string[] properties);
 
+
+        void Delete(T item);
+
         /// <summary>
         /// 从实体集中移除一个实体
         /// </summary>
@@ -34,11 +37,6 @@ namespace Hyde.Repository
         /// <param name="items">需要移除的实体</param>
         void Remove(IEnumerable<T> items);
 
-        /// <summary>
-        /// 修改实体集合中的一个实体
-        /// </summary>
-        /// <param name="item">需要修改的实体</param>
-        void Edit(T item);
         /// <summary>
         /// 创建一个实体
         /// </summary>

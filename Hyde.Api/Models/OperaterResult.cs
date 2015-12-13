@@ -15,11 +15,11 @@ namespace Hyde.Api.Models
         }
     }
 
-    public class OperateReult<T> : OperationResult
+    public class OperationResult<T> : OperationResult
     {
-        public OperateReult(bool isSuccess)
+        public OperationResult(bool isSuccess)
             : base(isSuccess)
         { }
-        T Entity { get; set; }
+        public T Entity { get; set; }
     }
 }

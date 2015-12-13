@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Hyde.Api.Model.Validation;
 using System.ComponentModel.DataAnnotations;
+
 namespace Hyde.Api.Model.RequestCommands
 {
+    
     /// <summary>
     /// 请求分页类
     /// </summary>
