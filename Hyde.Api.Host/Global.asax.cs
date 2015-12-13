@@ -19,6 +19,8 @@ namespace Hyde.Api.Host
 
             AutofacConfig.AutofacRegsiter(config);
 
+            AutoMapperConfig.InitialAutoMapper();
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

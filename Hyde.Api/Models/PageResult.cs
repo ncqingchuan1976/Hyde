@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hyde.Api.Models
 {
-    public class Page<T>
+    public class PageResult<T>
     {
         public int PageIndex { get; set; }
 

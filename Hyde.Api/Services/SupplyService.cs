@@ -52,6 +52,7 @@ namespace Hyde.Api.Services
         {
             _SupplyRepo.ChangeState(item, EntityState.Unchanged);
             _SupplyRepo.Edit(item, nameof(item.name), nameof(item.remark), nameof(item.shutout), nameof(item.priorlevel));
+            _SupplyRepo.UnitOfWork.Save();
             return new OperationResult<supplyDto>(true);
         }
 

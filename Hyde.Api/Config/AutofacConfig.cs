@@ -15,6 +15,10 @@ namespace Hyde.Api.Config
 {
     public class AutofacConfig
     {
+        /// <summary>
+        /// Autofac依赖注入配置
+        /// </summary>
+        /// <param name="Config"></param>
         public static void AutofacRegsiter(HttpConfiguration Config)
         {
             var builder = new ContainerBuilder();

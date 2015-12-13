@@ -11,7 +11,7 @@ using Hyde.Domain.Model;
 using PagedList;
 namespace Hyde.Api.Services
 {
-    public interface ISupplyService
+    public interface ISupplyService :IService
     {
         /// <summary>
         /// 添加供应商

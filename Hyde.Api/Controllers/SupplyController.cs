@@ -10,8 +10,11 @@ using Hyde.Api.Services;
 using Hyde.Api.Models;
 using Hyde.Api.Model.RequestCommands;
 using Hyde.Api.Model.RequestModels;
+using Hyde.Api.Filters;
+using AutoMapper;
 namespace Hyde.Api.Host.Controllers
 {
+    [InvalidModelStateFilter]
     public class SupplyController : ApiController
     {
 
@@ -24,22 +27,24 @@ namespace Hyde.Api.Host.Controllers
         }
 
         [HttpGet]
-        public Page<SupplyAdd> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
+        public PageResult<SupplyAdd> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
         {
             var page = Page ?? new PageCommand();
 
             var result = service.GetSupplyList(page.PageIndex, page.PageSize, Name, Code, ShuOut);
 
-            return new Page<SupplyAdd>()
+            
+            return new PageResult<SupplyAdd>()
             {
                 PageIndex = result.PageNumber,
                 PageSize = result.PageSize,
                 TotalItem = result.TotalItemCount,
                 ToTalPage = result.PageCount,
-                Entities = result.Select(t => t.Mapper())
+                Entities = result.Select(t => Mapper.Map<SupplyAdd>(t))
             };
         }
-
+        [HttpPost]
+        [EmptyParameterFilter("Item")]
         public HttpResponseMessage AddSupply(SupplyEdit Item)
         {
             var Dto = Item.Mapper();
@@ -54,6 +59,8 @@ namespace Hyde.Api.Host.Controllers
 
         }
 
+        [HttpPost]
+        [EmptyParameterFilter("Item")]
         public HttpResponseMessage EditSupply(int Key, SupplyEdit Item)
         {
             var Dto = Item.Mapper();
