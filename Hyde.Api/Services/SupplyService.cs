@@ -23,7 +23,7 @@ namespace Hyde.Api.Services
             _SupplyRepo = SupplyRepo;
         }
 
-        public OperationResult<supplyDto> AddSupply(supplyDto item)
+        public OperationResult<supplyDto> Add(supplyDto item)
         {
 
             _SupplyRepo.Add(item);
@@ -34,9 +34,10 @@ namespace Hyde.Api.Services
 
         }
 
-        public OperationResult<supplyDto> DeleteSupply(int Key)
-        {
 
+
+        public OperationResult<supplyDto> Delete(int Key)
+        {
             var Dto = FindSingle(Key);
             if (Dto == null)
             {
@@ -48,12 +49,17 @@ namespace Hyde.Api.Services
             return new OperationResult<supplyDto>(true) { Entity = Dto };
         }
 
-        public OperationResult<supplyDto> EditSupply(supplyDto item)
+        public OperationResult<supplyDto> Edit(supplyDto item)
         {
-            _SupplyRepo.ChangeState(item, EntityState.Unchanged);
-            _SupplyRepo.Edit(item, nameof(item.name), nameof(item.remark), nameof(item.shutout), nameof(item.priorlevel));
+            var Dto = FindSingle(item.key);
+            if (Dto == null)
+                return new OperationResult<supplyDto>(false);
+            Dto.name = item.name;
+            Dto.remark = item.remark;
+            Dto.priorlevel = item.priorlevel;
+            Dto.shutout = item.shutout;
             _SupplyRepo.UnitOfWork.Save();
-            return new OperationResult<supplyDto>(true);
+            return new OperationResult<supplyDto>(true) { Entity = item };
         }
 
         public supplyDto FindSingle(int Key)
@@ -61,7 +67,7 @@ namespace Hyde.Api.Services
             return _SupplyRepo.FindSingle(Key);
         }
 
-        public IPagedList<supplyDto> GetSupplyList(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = default(bool?))
+        public IPagedList<supplyDto> Find(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = default(bool?))
         {
 
             var query = _SupplyRepo.Find();
@@ -79,6 +85,16 @@ namespace Hyde.Api.Services
 
         }
 
+        public OperationResult<IEnumerable<int>> Delete(int[] Keys)
+        {
+            var list = _SupplyRepo.Find(t => Keys.Contains(t.key)).ToList();
+            var result = Keys.GroupJoin(list, t => t, o => o.key, (p, g) => new { p, g }).SelectMany(t => t.g.DefaultIfEmpty(), (p, x) => new { p.p, q = x == null ? 0 : x.key }).Where(t => t.q == 0).Select(t => t.p);
+            if (result.Count() > 0)
+                return new OperationResult<IEnumerable<int>>(false) { Entity = result };
+            _SupplyRepo.Remove(list);
+            _SupplyRepo.UnitOfWork.Save();
 
+            return new OperationResult<IEnumerable<int>>(true);
+        }
     }
 }

@@ -10,11 +10,12 @@ using AutoMapper;
 
 namespace Hyde.Api.Config
 {
-   public class AutoMapperConfig
+    public class AutoMapperConfig
     {
         public static void InitialAutoMapper()
         {
             Mapper.CreateMap<supplyDto, SupplyAdd>().ForMember(t => t.SupplyID, o => o.MapFrom(s => s.key));
+            Mapper.CreateMap<SupplyEdit, supplyDto>().ForMember(t => t.key, o => o.Ignore());
         }
     }
 }

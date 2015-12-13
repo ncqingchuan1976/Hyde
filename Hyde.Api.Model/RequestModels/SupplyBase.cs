@@ -47,39 +47,39 @@ namespace Hyde.Api.Model.RequestModels
 
     }
 
-    public static class SupplyExtension
-    {
-        public static SupplyAdd Mapper(this supplyDto Item)
-        {
-            if (Item == null)
-                return null;
+    //public static class SupplyExtension
+    //{
+    //    public static SupplyAdd Mapper(this supplyDto Item)
+    //    {
+    //        if (Item == null)
+    //            return null;
 
-            return new SupplyAdd()
-            {
-                SupplyID = Item.key,
-                Name = Item.name,
-                ShutOut = Item.shutout,
-                PriorLevel = Item.priorlevel,
-                Remark = Item.remark,
-                Code = Item.code
-            };
+    //        return new SupplyAdd()
+    //        {
+    //            SupplyID = Item.key,
+    //            Name = Item.name,
+    //            ShutOut = Item.shutout,
+    //            PriorLevel = Item.priorlevel,
+    //            Remark = Item.remark,
+    //            Code = Item.code
+    //        };
 
-        }
+    //    }
 
-        public static supplyDto Mapper(this SupplyEdit Item)
-        {
-            if (Item == null)
-                return null;
+    //    public static supplyDto Mapper(this SupplyEdit Item)
+    //    {
+    //        if (Item == null)
+    //            return null;
 
-            return new supplyDto()
-            {
-                name = Item.Name,
-                shutout = Item.ShutOut,
-                priorlevel = Item.PriorLevel,
-                remark = Item.Remark,
-                code = Item.Code
-            };
+    //        return new supplyDto()
+    //        {
+    //            name = Item.Name,
+    //            shutout = Item.ShutOut,
+    //            priorlevel = Item.PriorLevel,
+    //            remark = Item.Remark,
+    //            code = Item.Code
+    //        };
 
-        }
-    }
+    //    }
+    //}
 }

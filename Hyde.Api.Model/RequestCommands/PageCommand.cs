@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Hyde.Api.Model.RequestCommands
 {
-    
+
     /// <summary>
     /// 请求分页类
     /// </summary>
@@ -17,14 +17,13 @@ namespace Hyde.Api.Model.RequestCommands
         /// <summary>
         /// 页序号默认1，最小为1
         /// </summary>
-        [Minimum(1)]
+        [Range(1, int.MaxValue)]
         public int PageIndex { get; set; } = 1;
         /// <summary>
         /// 页大小，默认为10，最小1，最大100
         /// </summary>
-        [Minimum(10)]
-        [Maximum(100)]
-        public int PageSize { get; set; } = 10;
+        [Range(1, int.MaxValue)]
+        public int PageSize { get; set; } = 20;
 
     }
 }

@@ -18,13 +18,23 @@ namespace Hyde.Api.Services
         /// </summary>
         /// <param name="item">供应商实体</param>
         /// <returns></returns>
-        OperationResult<supplyDto> AddSupply(supplyDto item);
+        OperationResult<supplyDto> Add(supplyDto item);
+        /// <summary>
+        /// 根据条件查询并返回供应商列表，带分页
+        /// </summary>
+        /// <param name="PageIndex">页号</param>
+        /// <param name="PageSize">页大小</param>
+        /// <param name="Name">名称</param>
+        /// <param name="Code">编码</param>
+        /// <param name="ShutOut">停用</param>
+        /// <returns>供应商列表</returns>
+        IPagedList<supplyDto> Find(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = null);
 
-        IPagedList<supplyDto> GetSupplyList(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = null);
+        OperationResult<supplyDto> Edit(supplyDto item);
 
-        OperationResult<supplyDto> EditSupply(supplyDto item);
+        OperationResult<supplyDto> Delete(int Key);
 
-        OperationResult<supplyDto> DeleteSupply(int Key);
+        OperationResult<IEnumerable<int>> Delete(int[] Keys);
 
         supplyDto FindSingle(int Key);
     }
