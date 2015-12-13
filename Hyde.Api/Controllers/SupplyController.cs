@@ -31,9 +31,9 @@ namespace Hyde.Api.Host.Controllers
         {
             var page = Page ?? new PageCommand();
 
-            var result = service.GetSupplyList(page.PageIndex, page.PageSize, Name, Code, ShuOut);
+            var result = service.Find(page.PageIndex, page.PageSize, Name, Code, ShuOut);
 
-            
+
             return new PageResult<SupplyAdd>()
             {
                 PageIndex = result.PageNumber,
@@ -47,9 +47,9 @@ namespace Hyde.Api.Host.Controllers
         [EmptyParameterFilter("Item")]
         public HttpResponseMessage AddSupply(SupplyEdit Item)
         {
-            var Dto = Item.Mapper();
+            var Dto = Mapper.Map<supplyDto>(Item);
 
-            var result = service.AddSupply(Dto);
+            var result = service.Add(Dto);
 
             if (!result.IsSuccess)
             {
@@ -63,9 +63,9 @@ namespace Hyde.Api.Host.Controllers
         [EmptyParameterFilter("Item")]
         public HttpResponseMessage EditSupply(int Key, SupplyEdit Item)
         {
-            var Dto = Item.Mapper();
+            var Dto = Mapper.Map<supplyDto>(Item);
             Dto.key = Key;
-            if (!service.EditSupply(Dto).IsSuccess)
+            if (!service.Edit(Dto).IsSuccess)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -75,9 +75,21 @@ namespace Hyde.Api.Host.Controllers
         [HttpPost]
         public HttpResponseMessage DeleteSupply(int Key)
         {
-            if (!service.DeleteSupply(Key).IsSuccess)
+            if (!service.Delete(Key).IsSuccess)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage DeleteRange(int[] Key)
+        {
+            var result = service.Delete(Key);
+            if (!result.IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result.Entity);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
