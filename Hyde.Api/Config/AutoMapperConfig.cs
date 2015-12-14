@@ -16,7 +16,7 @@ namespace Hyde.Api.Config
         {
             Mapper.CreateMap<supplyDto, Supply>();
             Mapper.CreateMap<Supply, supplyDto>();
-
+            Mapper.CreateMap<brandDto, Brand>();
 
         }
     }

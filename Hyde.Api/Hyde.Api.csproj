@@ -83,6 +83,7 @@
     <Compile Include="Config\RouteConfig.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Constraints\OptionalRegExConstraint.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\SupplyController.cs" />
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
     <Compile Include="Filters\EmptyParameterFilterAttribute.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\RequestCommands\IRequestCommand.cs" />
+    <Compile Include="Models\RequestCommands\PageCommand.cs" />
     <Compile Include="Services\BrandService.cs" />
     <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Services\IService.cs" />

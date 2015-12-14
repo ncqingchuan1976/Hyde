@@ -7,9 +7,9 @@ using System.Web.Http;
 using Hyde.Domain.Model;
 using Hyde.Api.Services;
 using Hyde.Api.Models;
-using Hyde.Api.Model.RequestCommands;
 using Hyde.Api.Model.RequestModels;
 using Hyde.Api.Filters;
+using Hyde.Api.RequestCommands;
 using AutoMapper;
 namespace Hyde.Api.Host.Controllers
 {
@@ -24,7 +24,7 @@ namespace Hyde.Api.Host.Controllers
         }
 
         [HttpGet]
-        public PageResult<Supply> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
+        public PageResult<Supply> GetSupplyList(PageCommand Page = null, string Name = null, string Code = null, Boolean? ShuOut = null)
         {
             var page = Page ?? new PageCommand();
 

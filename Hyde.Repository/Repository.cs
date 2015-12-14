@@ -65,7 +65,9 @@ namespace Hyde.Repository
         public T FindSingle(params object[] keys)
         {
             return Set().Find(keys);
+
         }
+
 
         public T FindSingle(Expression<Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
         {

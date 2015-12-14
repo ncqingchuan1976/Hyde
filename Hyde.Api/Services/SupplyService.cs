@@ -5,8 +5,6 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Hyde.Api.Models;
-using Hyde.Api.Model.RequestModels;
-using Hyde.Api.Model.RequestCommands;
 using Hyde.Repository;
 using Hyde.Domain.Model;
 using PagedList;

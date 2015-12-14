@@ -37,6 +37,7 @@ namespace Hyde.Api.Config
         private static void InitService(ContainerBuilder builder)
         {
             builder.RegisterType<SupplyService>().As<ISupplyService>();
+            builder.RegisterType<BrandService>().As<IBrandService>();
         }
     }
 }
