@@ -14,6 +14,11 @@ namespace Hyde.Api.Services
     public class SupplyService : ISupplyService
     {
 
+        private int Save()
+        {
+            return _SupplyRepo.UnitOfWork.Save();
+        }
+
         readonly IRepository<supplyDto> _SupplyRepo;
 
         public SupplyService(IRepository<supplyDto> SupplyRepo)
@@ -26,7 +31,7 @@ namespace Hyde.Api.Services
 
             _SupplyRepo.Add(item);
 
-            _SupplyRepo.UnitOfWork.Save();
+            Save();
 
             return new OperationResult<supplyDto>(true) { Entity = item };
 
@@ -36,14 +41,14 @@ namespace Hyde.Api.Services
         {
 
             _SupplyRepo.Delete(item);
-            _SupplyRepo.UnitOfWork.Save();
+            Save();
             return new OperationResult<supplyDto>(true) { Entity = item };
         }
 
         public OperationResult<supplyDto> Edit(supplyDto item)
         {
             _SupplyRepo.Edit(item, nameof(item.name), nameof(item.remark), nameof(item.shutout), nameof(item.priorlevel));
-            _SupplyRepo.UnitOfWork.Save();
+            Save();
             return new OperationResult<supplyDto>(true) { Entity = item };
         }
 
