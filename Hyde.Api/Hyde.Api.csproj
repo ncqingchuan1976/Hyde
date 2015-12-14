@@ -90,7 +90,8 @@
     <Compile Include="Models\OperationResult.cs" />
     <Compile Include="Models\PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ISave.cs" />
+    <Compile Include="Services\BrandService.cs" />
+    <Compile Include="Services\IBrandService.cs" />
     <Compile Include="Services\IService.cs" />
     <Compile Include="Services\ISupplyService.cs" />
     <Compile Include="Services\SupplyService.cs" />

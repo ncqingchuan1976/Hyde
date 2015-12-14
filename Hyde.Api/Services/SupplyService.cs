@@ -34,30 +34,17 @@ namespace Hyde.Api.Services
 
         }
 
-
-
-        public OperationResult<supplyDto> Delete(int Key)
+        public OperationResult<supplyDto> Delete(supplyDto item)
         {
-            var Dto = FindSingle(Key);
-            if (Dto == null)
-            {
-                return new OperationResult<supplyDto>(false);
-            }
 
-            _SupplyRepo.Remove(Dto);
+            _SupplyRepo.Delete(item);
             _SupplyRepo.UnitOfWork.Save();
-            return new OperationResult<supplyDto>(true) { Entity = Dto };
+            return new OperationResult<supplyDto>(true) { Entity = item };
         }
 
         public OperationResult<supplyDto> Edit(supplyDto item)
         {
-            var Dto = FindSingle(item.key);
-            if (Dto == null)
-                return new OperationResult<supplyDto>(false);
-            Dto.name = item.name;
-            Dto.remark = item.remark;
-            Dto.priorlevel = item.priorlevel;
-            Dto.shutout = item.shutout;
+            _SupplyRepo.Edit(item, nameof(item.name), nameof(item.remark), nameof(item.shutout), nameof(item.priorlevel));
             _SupplyRepo.UnitOfWork.Save();
             return new OperationResult<supplyDto>(true) { Entity = item };
         }
@@ -95,6 +82,11 @@ namespace Hyde.Api.Services
             _SupplyRepo.UnitOfWork.Save();
 
             return new OperationResult<IEnumerable<int>>(true);
+        }
+
+        public supplyDto Create()
+        {
+            return _SupplyRepo.Create();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Hyde.Api.Model.RequestCommands
         [Range(1, int.MaxValue)]
         public int PageIndex { get; set; } = 1;
         /// <summary>
-        /// 页大小，默认为10，最小1，最大100
+        /// 页大小，默认为20，最小为1
         /// </summary>
         [Range(1, int.MaxValue)]
         public int PageSize { get; set; } = 20;

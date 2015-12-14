@@ -34,6 +34,12 @@ namespace Hyde.Repository
         void Delete(T item);
 
         /// <summary>
+        /// 断开状态下将实体集合移除
+        /// </summary>
+        /// <param name="items">需要移除的实体集合</param>
+        void Delete(IEnumerable<T> items);
+
+        /// <summary>
         /// 从实体集中移除一个实体
         /// </summary>
         /// <param name="item"></param>
@@ -49,7 +55,7 @@ namespace Hyde.Repository
         /// </summary>
         /// <param name="item">返回创建成功的实体</param>
         /// <returns></returns>
-        T Create(T item);
+        T Create();
         /// <summary>
         /// 根据主键查询并返回查询到的实体
         /// </summary>

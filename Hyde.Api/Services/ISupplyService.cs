@@ -13,6 +13,9 @@ namespace Hyde.Api.Services
 {
     public interface ISupplyService :IService
     {
+
+        supplyDto Create();
+
         /// <summary>
         /// 添加供应商
         /// </summary>
@@ -32,7 +35,7 @@ namespace Hyde.Api.Services
 
         OperationResult<supplyDto> Edit(supplyDto item);
 
-        OperationResult<supplyDto> Delete(int Key);
+        OperationResult<supplyDto> Delete(supplyDto item);
 
         OperationResult<IEnumerable<int>> Delete(int[] Keys);
 

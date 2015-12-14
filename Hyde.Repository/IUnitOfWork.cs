@@ -30,7 +30,7 @@ namespace Hyde.Repository
         /// <summary>
         /// Dbcontext，只读
         /// </summary>
-        DbContext Currentcontext { get; }
+        DbContext Context { get; }
         /// <summary>
         /// 执行Sql语句，并返回受影响的行数
         /// </summary>

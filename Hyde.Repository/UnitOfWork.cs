@@ -23,7 +23,7 @@ namespace Hyde.Repository
             _dbcontext = dbcontext;
         }
 
-        public DbContext Currentcontext
+        public DbContext Context
         {
             get
             {
@@ -34,6 +34,7 @@ namespace Hyde.Repository
         public DbTransaction BeginTransaction()
         {
             var connection = _dbcontext.Database.Connection;
+
             if (connection.State != System.Data.ConnectionState.Open)
             {
                 connection.Open();

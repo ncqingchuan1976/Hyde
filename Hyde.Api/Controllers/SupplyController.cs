@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Hyde.Domain.Model;
-using Hyde.Repository;
 using Hyde.Api.Services;
 using Hyde.Api.Models;
 using Hyde.Api.Model.RequestCommands;
@@ -17,8 +16,6 @@ namespace Hyde.Api.Host.Controllers
     [InvalidModelStateFilter]
     public class SupplyController : ApiController
     {
-
-
         private readonly ISupplyService service;
 
         public SupplyController(ISupplyService Service)
@@ -27,25 +24,24 @@ namespace Hyde.Api.Host.Controllers
         }
 
         [HttpGet]
-        public PageResult<SupplyAdd> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
+        public PageResult<Supply> GetSupplyList([FromUri]PageCommand Page, string Name = null, string Code = null, Boolean? ShuOut = null)
         {
             var page = Page ?? new PageCommand();
 
             var result = service.Find(page.PageIndex, page.PageSize, Name, Code, ShuOut);
 
-
-            return new PageResult<SupplyAdd>()
+            return new PageResult<Supply>()
             {
                 PageIndex = result.PageNumber,
                 PageSize = result.PageSize,
                 TotalItem = result.TotalItemCount,
                 ToTalPage = result.PageCount,
-                Entities = result.Select(t => Mapper.Map<SupplyAdd>(t))
+                Entities = result.Select(t => Mapper.Map<Supply>(t))
             };
         }
         [HttpPost]
         [EmptyParameterFilter("Item")]
-        public HttpResponseMessage AddSupply(SupplyEdit Item)
+        public HttpResponseMessage AddSupply(Supply Item)
         {
             var Dto = Mapper.Map<supplyDto>(Item);
 
@@ -61,10 +57,9 @@ namespace Hyde.Api.Host.Controllers
 
         [HttpPost]
         [EmptyParameterFilter("Item")]
-        public HttpResponseMessage EditSupply(int Key, SupplyEdit Item)
+        public HttpResponseMessage EditSupply(Supply Item)
         {
             var Dto = Mapper.Map<supplyDto>(Item);
-            Dto.key = Key;
             if (!service.Edit(Dto).IsSuccess)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
@@ -75,7 +70,9 @@ namespace Hyde.Api.Host.Controllers
         [HttpPost]
         public HttpResponseMessage DeleteSupply(int Key)
         {
-            if (!service.Delete(Key).IsSuccess)
+            var Dto = service.Create();
+
+            if (!service.Delete(Dto).IsSuccess)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -84,15 +81,25 @@ namespace Hyde.Api.Host.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage DeleteRange(int[] Key)
+        [EmptyParameterFilter("Keys")]
+        public HttpResponseMessage DeleteSupply([FromBody]int[] Keys)
         {
-            var result = service.Delete(Key);
+            var result = service.Delete(Keys);
+
             if (!result.IsSuccess)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result.Entity);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
+        }
+
+        [HttpGet]
+        public Supply GetSupply(int Key)
+        {
+            var Dto = service.FindSingle(Key);
+
+            return Mapper.Map<Supply>(Dto);
         }
     }
 }

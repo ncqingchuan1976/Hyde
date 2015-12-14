@@ -13,7 +13,7 @@ namespace Hyde.Api.Filters
 
 {
     /// <summary>
-    /// 筛选器,验证模型参数是否为空
+    /// 筛选器,验证参数模型是否为空
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
     public class EmptyParameterFilterAttribute : ActionFilterAttribute

@@ -40,11 +40,11 @@ namespace Hyde.Repository
 
         public void ChangeState(T item, EntityState state)
         {
-            var entry = _unitofwork.Currentcontext.Entry(item);
+            var entry = _unitofwork.Context.Entry(item);
             entry.State = state;
         }
 
-        public T Create(T item)
+        public T Create()
         {
             return Set().Create();
         }
@@ -81,7 +81,7 @@ namespace Hyde.Repository
 
         private DbSet<T> Set()
         {
-            return _unitofwork.Currentcontext.Set<T>();
+            return _unitofwork.Context.Set<T>();
         }
 
         private IQueryable<T> Include(params Expression<Func<T, object>>[] includes)
@@ -138,13 +138,23 @@ namespace Hyde.Repository
 
         public DbEntityEntry<T> Entry(T item)
         {
-            return _unitofwork.Currentcontext.Entry(item);
+            return _unitofwork.Context.Entry(item);
         }
 
         public void Delete(T item)
         {
             ChangeState(item, EntityState.Unchanged);
             Remove(item);
+        }
+
+        public void Delete(IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                ChangeState(item, EntityState.Unchanged);
+            }
+
+            Remove(items);
         }
     }
 }
