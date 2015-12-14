@@ -8,7 +8,7 @@ using System.Net;
 using System.Web.Http;
 using Hyde.Api.Filters;
 using Hyde.Api.Models.RequestCommands;
-using Hyde.Api.Models;
+using Hyde.Api.Models.ResultModels;
 using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Services;
 using AutoMapper;

@@ -5,7 +5,7 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
-namespace Hyde.Api.Models.Validation
+namespace Hyde.Api.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class MinimumAttribute : ValidationAttribute

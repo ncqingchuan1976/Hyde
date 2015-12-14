@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Hyde.Api.Models;
+using Hyde.Api.Models.ResultModels;
 using Hyde.Repository;
 using Hyde.Domain.Model;
 using PagedList;

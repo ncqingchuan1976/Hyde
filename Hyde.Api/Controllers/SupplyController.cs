@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Hyde.Domain.Model;
 using Hyde.Api.Services;
-using Hyde.Api.Models;
+using Hyde.Api.Models.ResultModels;
 using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Filters;
 using Hyde.Api.Models.RequestCommands;

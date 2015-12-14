@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using Hyde.Api.Models.Validation;
+using Hyde.Api.Validation;
 using Hyde.Domain.Model;
 namespace Hyde.Api.Models.RequestModels
 {

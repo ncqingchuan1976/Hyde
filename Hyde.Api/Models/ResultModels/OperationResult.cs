@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hyde.Api.Models
+namespace Hyde.Api.Models.ResultModels
 {
     public abstract class OperationResult
     {

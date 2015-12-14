@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hyde.Api.Models.RequestModels;
-using Hyde.Api.Models;
+using Hyde.Api.Models.ResultModels;
 using PagedList;
 using Hyde.Domain.Model;
 namespace Hyde.Api.Services

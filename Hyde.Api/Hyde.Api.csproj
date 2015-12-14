@@ -88,12 +88,12 @@
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
     <Compile Include="Filters\EmptyParameterFilterAttribute.cs" />
     <Compile Include="Filters\InvalidModelStateFilterAttribute.cs" />
-    <Compile Include="Models\OperationResult.cs" />
-    <Compile Include="Models\PageResult.cs" />
+    <Compile Include="Models\ResultModels\OperationResult.cs" />
+    <Compile Include="Models\ResultModels\PageResult.cs" />
     <Compile Include="Models\RequestModels\Brand.cs" />
     <Compile Include="Models\RequestModels\Supply.cs" />
-    <Compile Include="Models\Validation\MaximumAttribute.cs" />
-    <Compile Include="Models\Validation\MinimumAttribute.cs" />
+    <Compile Include="Validation\MaximumAttribute.cs" />
+    <Compile Include="Validation\MinimumAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RequestCommands\IRequestCommand.cs" />
     <Compile Include="Models\RequestCommands\PageCommand.cs" />

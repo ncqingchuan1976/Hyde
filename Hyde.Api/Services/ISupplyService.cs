@@ -5,13 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Hyde.Api.Models.RequestModels;
-using Hyde.Api.Models;
+using Hyde.Api.Models.ResultModels;
 using Hyde.Domain.Model;
 using PagedList;
 namespace Hyde.Api.Services
+
 {
-    public interface ISupplyService :IService
+    /// <summary>
+    /// 供应商操作接口
+    /// </summary>
+    public interface ISupplyService : IService
     {
+        /// <summary>
+        /// 创建一个供应商
+        /// </summary>
+        /// <returns></returns>
 
         supplyDto Create();
 
@@ -31,7 +39,11 @@ namespace Hyde.Api.Services
         /// <param name="ShutOut">停用</param>
         /// <returns>供应商列表</returns>
         IPagedList<supplyDto> Find(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = null);
-
+        /// <summary>
+        /// 编辑供应商
+        /// </summary>
+        /// <param name="item">需要编辑的供应商资料</param>
+        /// <returns>返回编辑后的供应商</returns>
         OperationResult<supplyDto> Edit(supplyDto item);
 
         OperationResult<supplyDto> Delete(supplyDto item);
