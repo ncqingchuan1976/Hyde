@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-namespace Hyde.Api.Model.RequestModels
+namespace Hyde.Api.Models.RequestModels
 {
     public class Brand
     {

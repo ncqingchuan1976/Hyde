@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.Globalization;
-namespace Hyde.Api.Model.Validation
+namespace Hyde.Api.Models.Validation
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
     public class MaximumAttribute : ValidationAttribute

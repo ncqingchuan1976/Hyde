@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Repository", "Hyde.Rep
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Context", "Hyde.DbContext\Hyde.Context.csproj", "{4BA942A4-1901-4D5A-9734-E6EE6D93E167}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api.Model", "Hyde.Api.Model\Hyde.Api.Model.csproj", "{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hyde.Api.Host", "Hyde.Api.Host\Hyde.Api.Host.csproj", "{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagedList", "PagedList\PagedList.csproj", "{DA52D7C3-B871-48EC-B009-AC782AD50266}"
@@ -39,10 +37,6 @@ Global
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BA942A4-1901-4D5A-9734-E6EE6D93E167}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2CD01CB5-694D-49FC-8701-0424D1EBE6EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8674FDE5-89E1-497E-AB0C-AF6B56B3D475}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -7,11 +7,12 @@ using System.Net.Http;
 using System.Net;
 using System.Web.Http;
 using Hyde.Api.Filters;
-using Hyde.Api.RequestCommands;
+using Hyde.Api.Models.RequestCommands;
 using Hyde.Api.Models;
-using Hyde.Api.Model.RequestModels;
+using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Services;
 using AutoMapper;
+using Hyde.Domain.Model;
 namespace Hyde.Api.Controllers
 {
     [InvalidModelStateFilter]
@@ -30,16 +31,7 @@ namespace Hyde.Api.Controllers
 
             var result = _BrandService.Find(page.PageIndex, page.PageSize, ShutOut);
 
-            return new PageResult<Brand>()
-            {
-                PageIndex = result.PageNumber,
-                PageSize = result.PageSize,
-                TotalItem = result.TotalItemCount,
-                ToTalPage = result.PageCount,
-                Entities = result.Select(t => Mapper.Map<Brand>(t))
-
-
-            };
+            return result.ToPageResult<brandDto, Brand>(result.Select(t => Mapper.Map<Brand>(t)));
         }
 
         [HttpGet]
@@ -47,6 +39,34 @@ namespace Hyde.Api.Controllers
         {
             var Dto = _BrandService.FindSingle(Key);
             return Mapper.Map<Brand>(Dto);
+        }
+
+        [HttpPost]
+
+        public HttpResponseMessage EditBrand([FromBody]Brand Item)
+        {
+            var Dto = Mapper.Map<brandDto>(Item);
+
+            if (!_BrandService.Edit(Dto).IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
+        }
+
+        [HttpPost]
+
+        public HttpResponseMessage AddBrand([FromBody] Brand Item)
+        {
+            var Dto = Mapper.Map<brandDto>(Item);
+
+            if (!_BrandService.Add(Dto).IsSuccess)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
         }
 
     }

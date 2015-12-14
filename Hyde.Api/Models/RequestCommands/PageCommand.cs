@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hyde.Api.Model.Validation;
+using Hyde.Api.Models.Validation;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Web.Http;
-namespace Hyde.Api.RequestCommands
+namespace Hyde.Api.Models.RequestCommands
 {
     [FromUri]
     /// <summary>

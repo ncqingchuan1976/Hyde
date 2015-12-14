@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper.Mappers;
-using Hyde.Api.Model.RequestModels;
+using Hyde.Api.Models.RequestModels;
 using Hyde.Domain.Model;
 using AutoMapper;
 
@@ -17,6 +17,7 @@ namespace Hyde.Api.Config
             Mapper.CreateMap<supplyDto, Supply>();
             Mapper.CreateMap<Supply, supplyDto>();
             Mapper.CreateMap<brandDto, Brand>();
+            Mapper.CreateMap<Brand, brandDto>();
 
         }
     }

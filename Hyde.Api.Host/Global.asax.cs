@@ -21,6 +21,8 @@ namespace Hyde.Api.Host
 
             AutoMapperConfig.InitialAutoMapper();
 
+            WebApiConfig.WebApiInitial(config);
+
         }
 
         protected void Session_Start(object sender, EventArgs e)

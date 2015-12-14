@@ -7,11 +7,11 @@ using System.Web.Http;
 using Hyde.Domain.Model;
 using Hyde.Api.Services;
 using Hyde.Api.Models;
-using Hyde.Api.Model.RequestModels;
+using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Filters;
-using Hyde.Api.RequestCommands;
+using Hyde.Api.Models.RequestCommands;
 using AutoMapper;
-namespace Hyde.Api.Host.Controllers
+namespace Hyde.Api.Controllers
 {
     [InvalidModelStateFilter]
     public class SupplyController : ApiController
@@ -30,14 +30,7 @@ namespace Hyde.Api.Host.Controllers
 
             var result = service.Find(page.PageIndex, page.PageSize, Name, Code, ShuOut);
 
-            return new PageResult<Supply>()
-            {
-                PageIndex = result.PageNumber,
-                PageSize = result.PageSize,
-                TotalItem = result.TotalItemCount,
-                ToTalPage = result.PageCount,
-                Entities = result.Select(t => Mapper.Map<Supply>(t))
-            };
+            return result.ToPageResult<supplyDto, Supply>(result.Select(t => Mapper.Map<Supply>(t)));
         }
         [HttpPost]
         [EmptyParameterFilter("Item")]

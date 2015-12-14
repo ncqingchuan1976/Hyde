@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hyde.Api.RequestCommands
+namespace Hyde.Api.Models.RequestCommands
 {
     public interface IRequestCommand
     {

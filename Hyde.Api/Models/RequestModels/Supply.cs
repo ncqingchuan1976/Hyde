@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
-using Hyde.Api.Model.Validation;
+using Hyde.Api.Models.Validation;
 using Hyde.Domain.Model;
-namespace Hyde.Api.Model.RequestModels
+namespace Hyde.Api.Models.RequestModels
 {
     /// <summary>
     /// 供应商模型

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Hyde.Api.Model.RequestModels;
+using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Models;
 using PagedList;
 using Hyde.Domain.Model;
@@ -15,7 +15,9 @@ namespace Hyde.Api.Services
 
         brandDto FindSingle(int Key);
 
+        OperationResult<brandDto> Add(brandDto Item);
 
+        OperationResult<brandDto> Edit(brandDto Item);
 
     }
 }
