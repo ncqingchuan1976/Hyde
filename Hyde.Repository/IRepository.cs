@@ -20,10 +20,17 @@ namespace Hyde.Repository
         /// </summary>
         /// <param name="items">要追加的实体集</param>
         void Add(IEnumerable<T> items);
-
+        /// <summary>
+        /// 断开状态下，修改实体
+        /// </summary>
+        /// <param name="item">需要修改的实体</param>
+        /// <param name="properties">需要修改实体的属性集合，可为空</param>
         void Edit(T item, params string[] properties);
 
-
+        /// <summary>
+        /// 断开状态下删除实体
+        /// </summary>
+        /// <param name="item">需要删除的实体</param>
         void Delete(T item);
 
         /// <summary>
@@ -73,7 +80,12 @@ namespace Hyde.Repository
         /// <param name="item">要更改的实体</param>
         /// <param name="state">需要更改的状态</param>
         void ChangeState(T item, EntityState state);
-
+        /// <summary>
+        /// 通过执行Sql,返回实体集合
+        /// </summary>
+        /// <param name="sql">需执行的Sql语句</param>
+        /// <param name="parameters">Sql语句中的变量</param>
+        /// <returns>返回执行成功Sql的实体集合</returns>
         DbRawSqlQuery<T> SqlQuery(string sql, params object[] parameters);
 
         DbEntityEntry<T> Entry(T item);
