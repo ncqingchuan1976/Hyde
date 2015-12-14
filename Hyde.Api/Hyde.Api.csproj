@@ -54,6 +54,10 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -120,10 +124,6 @@
     <ProjectReference Include="..\Hyde.Repository\Hyde.Repository.csproj">
       <Project>{a152f4fb-f658-4b22-b985-39769679b312}</Project>
       <Name>Hyde.Repository</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PagedList\PagedList.csproj">
-      <Project>{da52d7c3-b871-48ec-b009-ac782ad50266}</Project>
-      <Name>PagedList</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
