@@ -32,10 +32,11 @@ namespace Hyde.Api.Models.ResultModels
     {
         success = 0,
         data_not_found = 10000,
-        data_allreadey_exists = 10001,
+        data_alreadey_exist = 10001,
         key_not_found = 10002,
-        key_allreadey_exists = 10003,
+        code_already_exist = 10003,
         not_in_range = 10004,
+        supply_priorlevel_already_exist = 10005,
         model_not_invalid = 20000,
         model_null_parameter = 20001,
         system_err = -1

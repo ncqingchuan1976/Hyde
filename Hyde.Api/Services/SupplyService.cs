@@ -25,49 +25,68 @@ namespace Hyde.Api.Services
             _SupplyRepo = SupplyRepo;
         }
 
-        public OperationResult<supplyDto> Add(supplyDto item)
+        public OperationResult<string> Add(supplyDto item)
         {
-            if (ExisisCode(item.code))
+            if (_SupplyRepo.Exist(t => t.code == item.code))
             {
-                return new OperationResult<supplyDto>(errstate.data_allreadey_exists, errstate.data_allreadey_exists.ToString()) { Entity = item };
+                return new OperationResult<string>(errstate.code_already_exist, errstate.code_already_exist.ToString())
+                {
+                    Entity = item.code
+                };
+            }
+            if (_SupplyRepo.Exist(t => t.priorlevel == item.priorlevel))
+            {
+                return new OperationResult<string>(errstate.supply_priorlevel_already_exist, errstate.supply_priorlevel_already_exist.ToString())
+                {
+                    Entity = item.priorlevel.ToString()
+                };
             }
 
             _SupplyRepo.Add(item);
 
             Save();
 
-            return new OperationResult<supplyDto>(errstate.success, errstate.success.ToString()) { Entity = item };
+            return new OperationResult<string>(errstate.success, errstate.success.ToString()) { Entity = item.key.ToString() };
 
         }
 
-        public OperationResult<supplyDto> Delete(supplyDto item)
+        public OperationResult<string> Delete(supplyDto item)
         {
+            _SupplyRepo.Delete(item);
 
-            var Dto = _SupplyRepo.FindSingle(item.key);
-
-            if (Dto == null)
+            try
             {
-                return new OperationResult<supplyDto>(errstate.key_not_found, errstate.key_not_found.ToString()) { Entity = item };
+                Save();
+                return new OperationResult<string>(errstate.success, errstate.success.ToString()) { Entity = null };
             }
-            _SupplyRepo.Remove(item);
-            Save();
-            return new OperationResult<supplyDto>(errstate.success, errstate.success.ToString()) { Entity = item };
+            catch (Exception ex)
+            {
+                return new OperationResult<string>(errstate.system_err, errstate.system_err.ToString()) { Entity = ex.Message };
+            }
+
         }
 
-        public OperationResult<supplyDto> Edit(supplyDto item)
+        public OperationResult<string> Edit(supplyDto item)
         {
             var Dto = FindSingle(item.key);
+
             if (Dto == null)
             {
-                return new OperationResult<supplyDto>(errstate.key_not_found, errstate.key_not_found.ToString()) { Entity = item };
+                return new OperationResult<string>(errstate.key_not_found, errstate.key_not_found.ToString())
+                {
+                    Entity = item.key.ToString()
+                };
             }
             else
             {
-                if (!Dto.code.Equals(item.code, StringComparison.InvariantCultureIgnoreCase))
+                if (item.priorlevel != Dto.priorlevel)
                 {
-                    if (ExisisCode(item.code))
+                    if (_SupplyRepo.Exist(t => t.priorlevel == item.priorlevel))
                     {
-                        return new OperationResult<supplyDto>(errstate.data_allreadey_exists, errstate.data_allreadey_exists.ToString()) { Entity = item };
+                        return new OperationResult<string>(errstate.supply_priorlevel_already_exist, errstate.supply_priorlevel_already_exist.ToString())
+                        {
+                            Entity = item.priorlevel.ToString()
+                        };
                     }
                 }
             }
@@ -76,7 +95,7 @@ namespace Hyde.Api.Services
             Dto.shutout = item.shutout;
             Dto.priorlevel = item.priorlevel;
             Save();
-            return new OperationResult<supplyDto>(errstate.success, errstate.success.ToString()) { Entity = item };
+            return new OperationResult<string>(errstate.success, errstate.success.ToString());
         }
 
         public supplyDto FindSingle(int Key)
@@ -117,16 +136,9 @@ namespace Hyde.Api.Services
 
             return new OperationResult<IEnumerable<int>>(errstate.success, errstate.success.ToString());
         }
-
         public supplyDto Create()
         {
             return _SupplyRepo.Create();
         }
-
-        private bool ExisisCode(string Code)
-        {
-            return _SupplyRepo.Find().Any(t => t.code == Code);
-        }
-
     }
 }

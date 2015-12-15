@@ -28,7 +28,7 @@ namespace Hyde.Api.Services
         /// </summary>
         /// <param name="item">供应商实体</param>
         /// <returns></returns>
-        OperationResult<supplyDto> Add(supplyDto item);
+        OperationResult<string> Add(supplyDto item);
         /// <summary>
         /// 根据条件查询并返回供应商列表，带分页
         /// </summary>
@@ -44,9 +44,9 @@ namespace Hyde.Api.Services
         /// </summary>
         /// <param name="item">需要编辑的供应商资料</param>
         /// <returns>返回编辑后的供应商</returns>
-        OperationResult<supplyDto> Edit(supplyDto item);
+        OperationResult<string> Edit(supplyDto item);
 
-        OperationResult<supplyDto> Delete(supplyDto item);
+        OperationResult<string> Delete(supplyDto item);
 
         OperationResult<IEnumerable<int>> Delete(int[] Keys);
 

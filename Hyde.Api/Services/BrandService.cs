@@ -8,6 +8,8 @@ using PagedList;
 using Hyde.Repository;
 using Hyde.Domain.Model;
 using Hyde.Api.Models.ResultModels;
+using System.Xml.Serialization;
+
 
 namespace Hyde.Api.Services
 {
@@ -21,10 +23,10 @@ namespace Hyde.Api.Services
 
         public OperationResult<brandDto> Add(brandDto Item)
         {
+
             _BrandRepo.Add(Item);
 
             _BrandRepo.UnitOfWork.Save();
-
 
             return new OperationResult<brandDto>(errstate.success, errstate.success.ToString()) { Entity = Item };
 
@@ -55,7 +57,7 @@ namespace Hyde.Api.Services
             if (ShutOut.HasValue)
                 query = query.Where(t => t.shutout == ShutOut.Value);
 
-            return query.ToPagedList(PageIndex, PageSize);
+            return query.OrderBy(t => t.key).ToPagedList(PageIndex, PageSize);
 
         }
 

@@ -94,6 +94,7 @@ namespace Hyde.Repository
         /// <returns>返回执行成功Sql的实体集合</returns>
         DbRawSqlQuery<T> SqlQuery(string sql, params object[] parameters);
 
+        bool Exist(Expression<Func<T, bool>> condition);
         DbEntityEntry<T> Entry(T item);
     }
 }

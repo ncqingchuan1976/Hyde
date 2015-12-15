@@ -158,5 +158,10 @@ namespace Hyde.Repository
 
             Remove(items);
         }
+
+        public bool Exist(Expression<Func<T, bool>> condition)
+        {
+            return Set().Count(condition) > 0;
+        }
     }
 }

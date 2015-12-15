@@ -37,12 +37,9 @@ namespace Hyde.Api.Controllers
         public HttpResponseMessage AddSupply(Supply Item)
         {
             var Dto = Mapper.Map<supplyDto>(Item);
-
             var result = service.Add(Dto);
-
-            if (result.Code == errstate.data_allreadey_exists)
+            if (result.Code != errstate.success)
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
-
 
             return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
 
@@ -56,7 +53,7 @@ namespace Hyde.Api.Controllers
 
             var result = service.Edit(Dto);
 
-            if (result.Code == errstate.data_allreadey_exists)
+            if (result.Code != errstate.success)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
@@ -67,16 +64,16 @@ namespace Hyde.Api.Controllers
         [HttpPost]
         public HttpResponseMessage DeleteSupply(int Key)
         {
-            var Dto = service.Create();
-            Dto.key = Key;
+            var Dto = new supplyDto() { key = Key };
+
             var result = service.Delete(Dto);
 
-            if (result.Code == errstate.key_not_found)
+            if (result.Code == errstate.system_err)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
+                return Request.CreateResponse(HttpStatusCode.InternalServerError, result);
             }
-
             return Request.CreateResponse(HttpStatusCode.OK);
+
         }
 
         [HttpPost]
