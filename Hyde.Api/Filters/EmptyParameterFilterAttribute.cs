@@ -36,7 +36,7 @@ namespace Hyde.Api.Filters
                 if (parameterValue == null)
                 {
                     actionContext.ModelState.AddModelError(ParameterName, FormatErrorMessage(ParameterName));
-                    actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.model_null_parameter, FormatErrorMessage(ParameterName)));
+                    actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
                 }
 
             }

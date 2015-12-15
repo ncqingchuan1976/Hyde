@@ -68,9 +68,9 @@ namespace Hyde.Api.Controllers
 
             var result = service.Delete(Dto);
 
-            if (result.Code == errstate.system_err)
+            if (result.Code != errstate.success)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError, result);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
             return Request.CreateResponse(HttpStatusCode.OK);
 
@@ -82,7 +82,7 @@ namespace Hyde.Api.Controllers
         {
             var result = service.Delete(Keys);
 
-            if (result.Code == errstate.not_in_range)
+            if (result.Code != errstate.success)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }

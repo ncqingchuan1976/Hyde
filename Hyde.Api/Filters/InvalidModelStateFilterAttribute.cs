@@ -20,8 +20,7 @@ namespace Hyde.Api.Filters
         {
             if (!actionContext.ModelState.IsValid)
             {
-                var result = actionContext.ModelState.Values.SelectMany(t => t.Errors, (p, t) => t.ErrorMessage);
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult<IEnumerable<string>>(errstate.model_not_invalid, errstate.model_not_invalid.ToString()) { Entity = result });
+                actionContext.Response = actionContext.Request.CreateErrorResponse(HttpStatusCode.BadRequest, actionContext.ModelState);
             }
 
         }
