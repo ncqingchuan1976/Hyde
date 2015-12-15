@@ -38,17 +38,4 @@ namespace Hyde.Api.Models.RequestModels
         [Minimum(1)]
         public int PriorLevel { get; set; }
     }
-
-    //public class SupplyAdd : SupplyBase
-    //{
-    //    [Display(Name = "供应商编码")]
-    //    public int SupplyID { get; set; }
-    //}
-
-    //public class SupplyEdit : SupplyBase
-    //{
-
-    //}
-
-
 }

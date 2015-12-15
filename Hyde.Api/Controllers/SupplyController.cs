@@ -40,10 +40,13 @@ namespace Hyde.Api.Controllers
 
             var result = service.Add(Dto);
 
-            if (!result.IsSuccess)
+            switch (result.Code)
             {
-                return Request.CreateResponse(HttpStatusCode.InternalServerError);
+                case errstate.data_allreadey_exists:
+                    return Request.CreateResponse(HttpStatusCode.BadRequest, result);
+
             }
+
             return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
 
         }
@@ -53,10 +56,14 @@ namespace Hyde.Api.Controllers
         public HttpResponseMessage EditSupply(Supply Item)
         {
             var Dto = Mapper.Map<supplyDto>(Item);
-            if (!service.Edit(Dto).IsSuccess)
+
+            var result = service.Edit(Dto);
+
+            if (result.Code == errstate.data_allreadey_exists)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
+
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
@@ -64,10 +71,11 @@ namespace Hyde.Api.Controllers
         public HttpResponseMessage DeleteSupply(int Key)
         {
             var Dto = service.Create();
+            var result = service.Delete(Dto);
 
-            if (!service.Delete(Dto).IsSuccess)
+            if (result.Code == errstate.ket_not_found)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
@@ -79,9 +87,9 @@ namespace Hyde.Api.Controllers
         {
             var result = service.Delete(Keys);
 
-            if (!result.IsSuccess)
+            if (result.Code == errstate.not_in_range)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, result.Entity);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);

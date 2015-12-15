@@ -9,6 +9,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.ModelBinding;
 using System.Collections;
+using Hyde.Api.Models.ResultModels;
 namespace Hyde.Api.Filters
 
 {
@@ -34,11 +35,8 @@ namespace Hyde.Api.Filters
             {
                 if (parameterValue == null)
                 {
-                    actionContext.ModelState.AddModelError(
-                        ParameterName, FormatErrorMessage(ParameterName));
-                    var result = actionContext.ModelState.Values.SelectMany(t => t.Errors, (p, t) => t.ErrorMessage);
-                    actionContext.Response = actionContext
-                        .Request.CreateResponse(HttpStatusCode.BadRequest, result);
+                    actionContext.ModelState.AddModelError(ParameterName, FormatErrorMessage(ParameterName));
+                    actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.model_null_parameter, FormatErrorMessage(ParameterName)));
                 }
 
             }

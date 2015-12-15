@@ -47,12 +47,14 @@ namespace Hyde.Api.Controllers
         {
             var Dto = Mapper.Map<brandDto>(Item);
 
-            if (!_BrandService.Edit(Dto).IsSuccess)
+            var result = _BrandService.Edit(Dto);
+
+            if (result.Code == errstate.ket_not_found)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         [HttpPost]
@@ -61,9 +63,11 @@ namespace Hyde.Api.Controllers
         {
             var Dto = Mapper.Map<brandDto>(Item);
 
-            if (!_BrandService.Add(Dto).IsSuccess)
+            var result = _BrandService.Add(Dto);
+
+            if (result.Code != errstate.success)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
