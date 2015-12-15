@@ -49,7 +49,7 @@ namespace Hyde.Api.Controllers
 
             var result = _BrandService.Edit(Dto);
 
-            if (result.Code == errstate.ket_not_found)
+            if (result.Code == errstate.key_not_found)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }

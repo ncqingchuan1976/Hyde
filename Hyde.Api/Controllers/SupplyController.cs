@@ -40,12 +40,9 @@ namespace Hyde.Api.Controllers
 
             var result = service.Add(Dto);
 
-            switch (result.Code)
-            {
-                case errstate.data_allreadey_exists:
-                    return Request.CreateResponse(HttpStatusCode.BadRequest, result);
+            if (result.Code == errstate.data_allreadey_exists)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, result);
 
-            }
 
             return Request.CreateResponse(HttpStatusCode.OK, Dto.key);
 
@@ -71,9 +68,10 @@ namespace Hyde.Api.Controllers
         public HttpResponseMessage DeleteSupply(int Key)
         {
             var Dto = service.Create();
+            Dto.key = Key;
             var result = service.Delete(Dto);
 
-            if (result.Code == errstate.ket_not_found)
+            if (result.Code == errstate.key_not_found)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }

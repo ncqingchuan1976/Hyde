@@ -33,7 +33,7 @@ namespace Hyde.Api.Models.ResultModels
         success = 0,
         data_not_found = 10000,
         data_allreadey_exists = 10001,
-        ket_not_found = 10002,
+        key_not_found = 10002,
         key_allreadey_exists = 10003,
         not_in_range = 10004,
         model_not_invalid = 20000,
