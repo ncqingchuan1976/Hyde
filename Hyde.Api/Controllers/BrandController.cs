@@ -25,6 +25,7 @@ namespace Hyde.Api.Controllers
             _BrandService = Service;
         }
         [HttpGet]
+        [EmptyParameterFilter("item")]
         public PageResult<Brand> GetBrandList(PageCommand Page = null, bool? ShutOut = null)
         {
             var page = Page ?? new PageCommand();
@@ -35,6 +36,7 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpGet]
+        
         public Brand GetBrand(int Key)
         {
             var Dto = _BrandService.FindSingle(Key);
@@ -42,14 +44,14 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpPost]
-
+        [EmptyParameterFilter("Item")]
         public HttpResponseMessage EditBrand([FromBody]Brand Item)
         {
             var Dto = Mapper.Map<brandDto>(Item);
 
             var result = _BrandService.Edit(Dto);
 
-            if (result.Code == errstate.key_not_found)
+            if (result.Code !=errstate.success)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
@@ -58,7 +60,7 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpPost]
-
+        [EmptyParameterFilter("Item")]
         public HttpResponseMessage AddBrand([FromBody] Brand Item)
         {
             var Dto = Mapper.Map<brandDto>(Item);

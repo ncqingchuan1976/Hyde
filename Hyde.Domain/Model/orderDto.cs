@@ -51,9 +51,9 @@ namespace Hyde.Domain.Model
 
         public customerDto customer { get; set; }
 
-        public virtual List<orderdetailDto> orderdetails { get; set; }
+        public virtual List<orderdetailDto> orderdetails { get; set; } = new List<orderdetailDto>();
 
-        public virtual List<orderpayDto> orderpays { get; set; }
+        public virtual List<orderpayDto> orderpays { get; set; } = new List<orderpayDto>();
 
     }
 }

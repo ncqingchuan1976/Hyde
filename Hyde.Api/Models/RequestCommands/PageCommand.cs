@@ -9,7 +9,7 @@ using System.Net.Http;
 using System.Web.Http;
 namespace Hyde.Api.Models.RequestCommands
 {
-    [FromUri]
+   
     /// <summary>
     /// 请求分页类
     /// </summary>
