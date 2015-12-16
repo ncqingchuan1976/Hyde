@@ -15,12 +15,7 @@ namespace Hyde.Domain.Model
             address = new address();
         }
 
-        public int key
-        {
-            get;
-
-            set;
-        }
+        public int key { get; set; }
 
         public int customerid { get; set; }
 
@@ -42,12 +37,7 @@ namespace Hyde.Domain.Model
 
         public address address { get; set; }
 
-        public byte[] lastchanged
-        {
-            get;
-
-            set;
-        }
+        public byte[] lastchanged { get; set; }
 
         public customerDto customer { get; set; }
 
