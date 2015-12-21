@@ -13,7 +13,7 @@ namespace Hyde.Api.Config
     {
         public static void WebApiInitial(HttpConfiguration Config)
         {
-
+            //Config.MessageHandlers.Add(new SupplyDispatcher());
             Config.ParameterBindingRules.Insert(0, t =>
             typeof(IRequestCommand).IsAssignableFrom(t.ParameterType) ? new FromUriAttribute().GetBinding(t) : null);
         }

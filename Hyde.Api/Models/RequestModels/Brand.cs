@@ -9,7 +9,7 @@ namespace Hyde.Api.Models.RequestModels
     public class Brand
     {
 
-        public int Key { get; set; }
+        public int key { get; set; }
 
         [Required]
         [StringLength(20)]

@@ -8,7 +8,7 @@ using PagedList;
 using Hyde.Domain.Model;
 namespace Hyde.Api.Services
 {
-    public interface IBrandService
+    public interface IBrandService:IService
     {
         IPagedList<brandDto> Find(int PageIndex, int PageSize, bool? ShutOut = null);
 

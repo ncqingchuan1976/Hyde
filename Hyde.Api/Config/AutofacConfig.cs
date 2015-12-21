@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using Autofac.Builder;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Hyde.Repository;
 using Hyde.Context;
 using System.Reflection;
 using System.Web.Http;
-using System.Net.Http;
 using Hyde.Api.Services;
 namespace Hyde.Api.Config
 {
@@ -18,26 +14,31 @@ namespace Hyde.Api.Config
         /// <summary>
         /// Autofac依赖注入配置
         /// </summary>
-        /// <param name="Config"></param>
+        /// <param name="Config">Httpconfigration</param>
         public static void AutofacRegsiter(HttpConfiguration Config)
         {
+            Assembly assembily = Assembly.GetExecutingAssembly();
             var builder = new ContainerBuilder();
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            builder.RegisterApiControllers(assembily);
             builder.RegisterType<HydeContext>().As<System.Data.Entity.DbContext>().InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
 
-            InitService(builder);
+            InitService(assembily.GetTypes(), builder);
 
             var container = builder.Build();
 
             Config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
-
-        private static void InitService(ContainerBuilder builder)
+        /// <summary>
+        /// 注册所有实现了IService的服务
+        /// </summary>
+        /// <param name="types">当前程序集中的类型集合</param>
+        /// <param name="builder">autofac构造器</param>
+        private static void InitService(Type[] types, ContainerBuilder builder)
         {
-            builder.RegisterType<SupplyService>().As<ISupplyService>();
-            builder.RegisterType<BrandService>().As<IBrandService>();
+            builder.RegisterTypes(types.Where(t => typeof(IService).IsAssignableFrom(t)).ToArray()).AsImplementedInterfaces().InstancePerLifetimeScope();
+
         }
     }
 }

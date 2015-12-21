@@ -34,6 +34,7 @@ namespace Hyde.Api.Services
                     Entity = item.code
                 };
             }
+
             if (_SupplyRepo.Exist(t => t.priorlevel == item.priorlevel))
             {
                 return new OperationResult<string>(errstate.supply_priorlevel_already_exist, errstate.supply_priorlevel_already_exist.ToString())
@@ -103,7 +104,7 @@ namespace Hyde.Api.Services
             return _SupplyRepo.FindSingle(Key);
         }
 
-        public IPagedList<supplyDto> Find(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = default(bool?))
+        public IPagedList<supplyDto> Find(int PageIndex, int PageSize, string Name = null, string Code = null, bool? ShutOut = null)
         {
 
             var query = _SupplyRepo.Find();
@@ -115,7 +116,7 @@ namespace Hyde.Api.Services
                 query = query.Where(t => t.code.StartsWith(Code));
 
             if (ShutOut.HasValue)
-                query = query.Where(t => t.shutout == ShutOut);
+                query = query.Where(t => t.shutout == ShutOut.Value);
 
             return query.OrderBy(t => t.key).AsNoTracking().ToPagedList(PageIndex, PageSize);
 

@@ -16,21 +16,27 @@ namespace Hyde.Api.Dispatcher
     {
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            IHttpRouteData routeData = request.GetRouteData();
-
-            var Controller = routeData.Values.SingleOrDefault(t => t.Key.CompareTo("controller") == 0).Value;
-
-            if (Controller != null)
+            if(request.Method.Method=="Post")
             {
-                switch (Controller.ToString())
-                {
-                    case "Supply":
-
-                        break;
-                    default:
-                        break;
-                }
+                request.CreateResponse(HttpStatusCode.OK);
             }
+
+            
+            //IHttpRouteData routeData = request.GetRouteData();
+
+            //var Controller = routeData.Values.SingleOrDefault(t => t.Key.CompareTo("controller") == 0).Value;
+
+            //if (Controller != null)
+            //{
+            //    switch (Controller.ToString())
+            //    {
+            //        case "Supply":
+
+            //            break;
+            //        default:
+            //            break;
+            //    }
+            //}
 
 
             return base.SendAsync(request, cancellationToken);

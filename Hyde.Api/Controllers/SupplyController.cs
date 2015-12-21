@@ -11,6 +11,10 @@ using Hyde.Api.Models.RequestModels;
 using Hyde.Api.Filters;
 using Hyde.Api.Models.RequestCommands;
 using AutoMapper;
+using System.IO;
+using System.Web;
+using System.Net.Http.Headers;
+
 namespace Hyde.Api.Controllers
 {
     [InvalidModelStateFilter]
@@ -24,11 +28,11 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpGet]
-        public PageResult<Supply> GetSupplyList(PageCommand Page = null, string Name = null, string Code = null, Boolean? ShuOut = null)
+        public PageResult<Supply> GetSupplyList(PageCommand Page = null, string Name = null, string Code = null, Boolean? ShutOut = null)
         {
             var page = Page ?? new PageCommand();
 
-            var result = service.Find(page.PageIndex, page.PageSize, Name, Code, ShuOut);
+            var result = service.Find(page.PageIndex, page.PageSize, Name, Code, ShutOut);
 
             return result.ToPageResult<supplyDto, Supply>(result.Select(t => Mapper.Map<Supply>(t)));
         }
@@ -97,5 +101,7 @@ namespace Hyde.Api.Controllers
 
             return Mapper.Map<Supply>(Dto);
         }
+
+      
     }
 }

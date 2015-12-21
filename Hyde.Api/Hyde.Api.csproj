@@ -88,6 +88,7 @@
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Constraints\OptionalRegExConstraint.cs" />
     <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\SupplyController.cs" />
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
     <Compile Include="Filters\EmptyParameterFilterAttribute.cs" />
