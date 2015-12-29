@@ -7,21 +7,23 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Net;
 using System.Net.Http.Headers;
-
 namespace Hyde.Api.Controllers
 {
     public class FileController : ApiController
     {
         [HttpPost]
 
-        public async Task<HttpResponseMessage> UpLoadFile()
+        public async Task<HttpResponseMessage> UploadFile()
         {
             if (!Request.Content.IsMimeMultipartContent("form-data"))
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            string fileSaveLocation = @"D:\";
+           
+
+            string fileSaveLocation = System.Web.HttpContext.Current.Server.MapPath("~/App_File");
+
             CustomMultipartFormDataStreamProvider provider = new CustomMultipartFormDataStreamProvider(fileSaveLocation);
 
             try

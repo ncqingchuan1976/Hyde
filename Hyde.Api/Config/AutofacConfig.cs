@@ -7,6 +7,8 @@ using Hyde.Context;
 using System.Reflection;
 using System.Web.Http;
 using Hyde.Api.Services;
+using Hyde.External.Sanfenqiu;
+using Hyde.External;
 namespace Hyde.Api.Config
 {
     public class AutofacConfig
@@ -23,7 +25,7 @@ namespace Hyde.Api.Config
             builder.RegisterType<HydeContext>().As<System.Data.Entity.DbContext>().InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
-
+            builder.RegisterType<SanfenqiuOp>().As<ISanfenqiu>().AsImplementedInterfaces();
             InitService(assembily.GetTypes(), builder);
 
             var container = builder.Build();
