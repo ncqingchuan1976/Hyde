@@ -87,6 +87,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanenqiuBrandList>(Json);
 
+
             return new operateResult<responseSanenqiuBrandList>() { error = 0, error_info = "success", data = response };
         }
 
@@ -164,7 +165,7 @@ namespace Hyde.External.Sanfenqiu
 
             string Json = client.GetAsync(url.ToString()).Result.Content.ReadAsStringAsync().Result;
 
-            if (Json.Contains("error"))
+            if (Json.Contains("error")|| Json.Contains("失败"))
             {
                 var result = JsonConvert.DeserializeObject<operateState>(Json);
 

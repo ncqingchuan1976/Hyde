@@ -29,14 +29,12 @@ namespace Hyde.Api.Validation
 
         public override bool IsValid(object value)
         {
-
             IComparable InitValue;
             if (value != null)
             {
                 InitValue = value as IComparable;
                 return InitValue.CompareTo(_minimumValue) >= 0;
             }
-
             return false;
         }
     }

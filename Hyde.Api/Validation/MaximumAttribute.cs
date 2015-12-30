@@ -10,18 +10,15 @@ namespace Hyde.Api.Validation
     public class MaximumAttribute : ValidationAttribute
     {
         private readonly IComparable _maximumValue;
-
-        public MaximumAttribute(object value)
+                public MaximumAttribute(object value)
             : base("字段 {0} 必须小于等于 {1}")
         {
             _maximumValue = value as IComparable;
         }
-
         public override string FormatErrorMessage(string name)
         {
             return string.Format(CultureInfo.CurrentCulture, ErrorMessageString, name, _maximumValue);
         }
-
         public override bool IsValid(object value)
         {
             IComparable InitValue;
@@ -30,7 +27,6 @@ namespace Hyde.Api.Validation
                 InitValue = value as IComparable;
                 return InitValue.CompareTo(_maximumValue) <= 0;
             }
-
             return false;
         }
     }
