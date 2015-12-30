@@ -32,7 +32,12 @@ namespace Hyde.External.Sanfenqiu
         /// <param name="cat_ids">分类ID集合用","分割，如:1,2,3</param>
         /// <returns>返回查询到的商品分类列表</returns>
         operateResult<responseSanfenqiuCatalogList> GetCatalogList(string sign, string cat_ids);
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sign"></param>
+        /// <param name="cat_id"></param>
+        /// <returns></returns>
         operateResult<responseSanfenqiuCatalog> GetCatalog(string sign, int cat_id);
 
         operateResult<responseSanenqiuBrandList> GetBrandList(string sign, string brand_ids);
