@@ -11,6 +11,12 @@ namespace Hyde.Api.Host
     public class Global : System.Web.HttpApplication
     {
 
+        public override void Init()
+        {           
+            PostAuthenticateRequest += (s, e) => { HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required); };
+            base.Init();
+        }
+
         protected void Application_Start(object sender, EventArgs e)
         {
             var config = GlobalConfiguration.Configuration;

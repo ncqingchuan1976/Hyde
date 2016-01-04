@@ -86,6 +86,7 @@
     <Compile Include="Config\AutofacConfig.cs" />
     <Compile Include="Config\AutoMapperConfig.cs" />
     <Compile Include="Config\RouteConfig.cs" />
+    <Compile Include="Config\SessionableControllerHandler.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Constraints\OptionalRegExConstraint.cs" />
     <Compile Include="Controllers\BrandController.cs" />
@@ -95,6 +96,7 @@
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
     <Compile Include="Filters\EmptyParameterFilterAttribute.cs" />
     <Compile Include="Filters\InvalidModelStateFilterAttribute.cs" />
+    <Compile Include="ModelBinders\UserBinder.cs" />
     <Compile Include="Models\ResultModels\OperationResult.cs" />
     <Compile Include="Models\ResultModels\PageResult.cs" />
     <Compile Include="Models\RequestModels\Brand.cs" />

@@ -48,8 +48,6 @@ namespace Hyde.External.Sanfenqiu
             return new operateResult<responseSanfenqiuArea>() { error = 0, error_info = "success", data = response };
         }
 
-
-
         public operateResult<responseSanfenqiuBrand> GetBrand(string sign, int brand_id)
         {
             StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=brand&a=get");
@@ -136,6 +134,49 @@ namespace Hyde.External.Sanfenqiu
             return new operateResult<responseSanfenqiuCatalogList>() { error = 0, error_info = "success", data = response };
         }
 
+        public operateResult<responseSanfenqiuOrder> GetOrderList(string sign, int? page = default(int?), int? page_num = default(int?), string order_ids = null, string order_sns = null, string other_order_sn = null, string consignee = null, string mobile = null, int? fromtime = default(int?))
+        {
+            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=order&a=index");
+            url.AppendFormat("&sign={0}", sign);
+
+            if (page.HasValue)
+                url.AppendFormat("&page={0}", page.Value);
+
+            if (page_num.HasValue)
+                url.AppendFormat("&page_num={0}", page_num.Value);
+
+            if (!string.IsNullOrWhiteSpace(order_ids))
+                url.AppendFormat("&order_ids={0}", order_ids);
+
+            if (!string.IsNullOrWhiteSpace(order_sns))
+                url.AppendFormat("&order_sns={0}", order_sns);
+
+            if (!string.IsNullOrWhiteSpace(other_order_sn))
+                url.AppendFormat("&other_order_sn={0}", other_order_sn);
+
+            if (!string.IsNullOrWhiteSpace(consignee))
+                url.AppendFormat("&consignee={0}", consignee);
+
+            if (!string.IsNullOrWhiteSpace(mobile))
+                url.AppendFormat("&mobile={0}", mobile);
+
+            if (fromtime.HasValue)
+                url.AppendFormat("&fromtime={0}", fromtime.Value);
+
+            var Json = client.GetAsync(url.ToString()).Result.Content.ReadAsStringAsync().Result;
+
+            if (Json.Contains("error"))
+            {
+                var result = JsonConvert.DeserializeObject<operateState>(Json);
+
+                return new operateResult<responseSanfenqiuOrder>() { error = result.error, error_info = result.error_info };
+            }
+
+            var response = JsonConvert.DeserializeObject<responseSanfenqiuOrder>(Json);
+
+            return new operateResult<responseSanfenqiuOrder>() { error = 0, error_info = "success", data = response };
+        }
+
         public operateResult<responseSanfenqiuProduct> GetProductList(string sign, int? page = null, int? page_num = null, string product_ids = null, string goods_code = null, string name = null, int? is_pic = default(int?), string datebegin = null)
         {
             StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=product&a=index");
@@ -165,7 +206,7 @@ namespace Hyde.External.Sanfenqiu
 
             string Json = client.GetAsync(url.ToString()).Result.Content.ReadAsStringAsync().Result;
 
-            if (Json.Contains("error")|| Json.Contains("失败"))
+            if (Json.Contains("error") || Json.Contains("失败"))
             {
                 var result = JsonConvert.DeserializeObject<operateState>(Json);
 
@@ -197,6 +238,32 @@ namespace Hyde.External.Sanfenqiu
             var response = JsonConvert.DeserializeObject<responseSanfenqiuStock>(Json);
 
             return new operateResult<responseSanfenqiuStock>() { error = 0, error_info = "success", data = response };
+        }
+
+        public operateResult<responseSanfenqiuStockChange> GetStockChange(string sign, string starttime = null, string endtime = null)
+        {
+            StringBuilder url = new StringBuilder(@"jinlang_channels/open.php?c=stock&a=update_stock");
+
+            url.AppendFormat("&sign={0}", sign);
+
+            if (!string.IsNullOrWhiteSpace(starttime))
+                url.AppendFormat("&starttime={0}", starttime);
+
+            if (!string.IsNullOrWhiteSpace(endtime))
+                url.AppendFormat("&endtime={0}", endtime);
+
+            var Json = client.GetAsync(url.ToString()).Result.Content.ReadAsStringAsync().Result;
+
+            if (Json.Contains("error") && Json.Contains("error_info"))
+            {
+                var result = JsonConvert.DeserializeObject<operateState>(Json);
+
+                return new operateResult<responseSanfenqiuStockChange>() { error = result.error, error_info = result.error_info };
+            }
+
+            var response = JsonConvert.DeserializeObject<responseSanfenqiuStockChange>(Json);
+
+            return new operateResult<responseSanfenqiuStockChange>() { error = 0, error_info = "success", data = response };
         }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="sanfenqiubrand.cs" />
     <Compile Include="sanfenqiucatalog.cs" />
     <Compile Include="SanfenqiuOp.cs" />
+    <Compile Include="sanfenqiuorder.cs" />
     <Compile Include="sanfenqiuproduct.cs" />
     <Compile Include="operateState.cs" />
     <Compile Include="sanfenqiustock.cs" />
