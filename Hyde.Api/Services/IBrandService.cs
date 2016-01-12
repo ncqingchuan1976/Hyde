@@ -12,7 +12,7 @@ namespace Hyde.Api.Services
     {
         IPagedList<brandDto> Find(int PageIndex, int PageSize, bool? ShutOut = null);
 
-        brandDto FindSingle(int Key);
+        Task<brandDto> FindSingleAsync(int Key);
 
         OperationResult<brandDto> Add(brandDto Item);
 

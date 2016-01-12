@@ -85,7 +85,6 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpGet]
-
         public HttpResponseMessage GetStock(int Product_id)
         {
             var result = service.GetStock(apikey, Product_id);
@@ -123,6 +122,7 @@ namespace Hyde.Api.Controllers
 
         }
 
+        [HttpGet]
         public HttpResponseMessage GetStockChange(DateTime? starttime = null, DateTime? endtime = null)
         {
             var format = "yyyy-MM-dd HH:mm:ss";

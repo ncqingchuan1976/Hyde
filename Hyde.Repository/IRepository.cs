@@ -93,8 +93,17 @@ namespace Hyde.Repository
         /// <param name="parameters">Sql语句中的变量</param>
         /// <returns>返回执行成功Sql的实体集合</returns>
         DbRawSqlQuery<T> SqlQuery(string sql, params object[] parameters);
-
+        /// <summary>
+        /// 根据条件检查实体是否已经存在
+        /// </summary>
+        /// <param name="condition">查询条件</param>
+        /// <returns>返回bool值，true：存在，false：不存在</returns>
         bool Exist(Expression<Func<T, bool>> condition);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         DbEntityEntry<T> Entry(T item);
     }
 }

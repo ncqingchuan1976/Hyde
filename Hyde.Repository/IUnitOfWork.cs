@@ -38,5 +38,7 @@ namespace Hyde.Repository
         /// <param name="parameters">sql中的变量，可为空</param>
         /// <returns>返回受影响的行数</returns>
         int ExecuteSqlCommand(string sql, params object[] parameters);
+
+        IRepository<T> GetRepository<T>() where T : class;
     }
 }

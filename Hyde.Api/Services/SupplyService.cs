@@ -20,9 +20,9 @@ namespace Hyde.Api.Services
 
         readonly IRepository<supplyDto> _SupplyRepo;
 
-        public SupplyService(IRepository<supplyDto> SupplyRepo)
+        public SupplyService(IUnitOfWork unitOfWork)
         {
-            _SupplyRepo = SupplyRepo;
+            _SupplyRepo = unitOfWork.GetRepository<supplyDto>();
         }
 
         public OperationResult<string> Add(supplyDto item)

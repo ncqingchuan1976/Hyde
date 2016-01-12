@@ -34,7 +34,7 @@ namespace Hyde.Api.Services
 
         public OperationResult<brandDto> Edit(brandDto Item)
         {
-            var Dto = FindSingle(Item.key);
+            var Dto = FindSingleAsync(Item.key).Result;
 
             if (Dto == null)
             {
@@ -61,10 +61,11 @@ namespace Hyde.Api.Services
 
         }
 
-        public brandDto FindSingle(int Key)
+        public async Task<brandDto> FindSingleAsync(int Key)
         {
-            return _BrandRepo.FindSingle(Key);
-
+            return await Task.Factory.StartNew(() => _BrandRepo.FindSingle(Key));
         }
+
+
     }
 }

@@ -36,11 +36,11 @@ namespace Hyde.Api.Controllers
         }
 
         [HttpGet]
-        
-        public Brand GetBrand(int Key)
+
+        public async Task<Brand> GetBrand(int Key)
         {
-            var Dto = _BrandService.FindSingle(Key);
-            return Mapper.Map<Brand>(Dto);
+            var Dto = await _BrandService.FindSingleAsync(Key);
+            return await Task.Factory.StartNew(() => Mapper.Map<Brand>(Dto));
         }
 
         [HttpPost]
@@ -51,7 +51,7 @@ namespace Hyde.Api.Controllers
 
             var result = _BrandService.Edit(Dto);
 
-            if (result.Code !=errstate.success)
+            if (result.Code != errstate.success)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }

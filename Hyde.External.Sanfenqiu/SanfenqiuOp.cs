@@ -11,18 +11,16 @@ namespace Hyde.External.Sanfenqiu
 {
     public class SanfenqiuOp : ISanfenqiu
     {
-
         HttpClient client;
-
+        string urlprefix = @"http://120.26.202.123/jinlang_channels/open.php?";
         public SanfenqiuOp()
         {
-            client = new HttpClient() { BaseAddress = new Uri("http://120.26.202.123") };
-
+            client = new HttpClient();
         }
 
         public operateResult<responseSanfenqiuArea> GetArea(string sign, int? area_id = default(int?), string area_name = null)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=area&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=area&a=index");
 
             url.AppendFormat("&sign={0}", sign);
 
@@ -50,7 +48,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuBrand> GetBrand(string sign, int brand_id)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=brand&a=get");
+            StringBuilder url = new StringBuilder(urlprefix + "c=brand&a=get");
 
             url.AppendFormat("&sign={0}&brand_id={1}", sign, brand_id);
 
@@ -70,7 +68,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanenqiuBrandList> GetBrandList(string sign, string brand_ids)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=brand&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=brand&a=index");
 
             url.AppendFormat("&sign={0}&brand_ids={1}", sign, brand_ids);
 
@@ -91,7 +89,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuCatalog> GetCatalog(string sign, int cat_id)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=category&a=get");
+            StringBuilder url = new StringBuilder(urlprefix + "c=category&a=get");
 
             url.AppendFormat("&sign={0}&cat_id={1}", sign, cat_id);
 
@@ -116,7 +114,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuCatalogList> GetCatalogList(string sign, string cat_ids)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=category&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=category&a=index");
 
             url.AppendFormat("&sign={0}&cat_ids={1}", sign, cat_ids);
 
@@ -136,7 +134,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuOrder> GetOrderList(string sign, int? page = default(int?), int? page_num = default(int?), string order_ids = null, string order_sns = null, string other_order_sn = null, string consignee = null, string mobile = null, int? fromtime = default(int?))
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=order&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=order&a=index");
             url.AppendFormat("&sign={0}", sign);
 
             if (page.HasValue)
@@ -179,7 +177,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuProduct> GetProductList(string sign, int? page = null, int? page_num = null, string product_ids = null, string goods_code = null, string name = null, int? is_pic = default(int?), string datebegin = null)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=product&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=product&a=index");
 
             url.AppendFormat("&sign={0}", sign);
 
@@ -222,7 +220,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuStock> GetStock(string sign, int product_id)
         {
-            StringBuilder url = new StringBuilder("jinlang_channels/open.php?c=stock&a=index");
+            StringBuilder url = new StringBuilder(urlprefix + "c=stock&a=index");
 
             url.AppendFormat("&sign={0}&product_id={1}", sign, product_id);
 
@@ -242,7 +240,7 @@ namespace Hyde.External.Sanfenqiu
 
         public operateResult<responseSanfenqiuStockChange> GetStockChange(string sign, string starttime = null, string endtime = null)
         {
-            StringBuilder url = new StringBuilder(@"jinlang_channels/open.php?c=stock&a=update_stock");
+            StringBuilder url = new StringBuilder(urlprefix + @"c=stock&a=update_stock");
 
             url.AppendFormat("&sign={0}", sign);
 

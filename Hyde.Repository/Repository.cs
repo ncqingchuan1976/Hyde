@@ -68,7 +68,6 @@ namespace Hyde.Repository
 
         }
 
-
         public T FindSingle(Expression<Func<T, bool>> condition, params Expression<Func<T, object>>[] includes)
         {
             var query = Include(includes);

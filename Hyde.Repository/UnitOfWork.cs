@@ -53,6 +53,11 @@ namespace Hyde.Repository
             return _dbcontext.Database.ExecuteSqlCommand(sql, parameters);
         }
 
+        public IRepository<T> GetRepository<T>() where T : class
+        {
+            return new Repository<T>(this);
+        }
+
         public void Rollback(DbTransaction transaction)
         {
             transaction.Rollback();
