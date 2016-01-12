@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hyde.External.Sanfenqiu
+namespace Hyde.External
 {
     public class operateResult<T>
     {

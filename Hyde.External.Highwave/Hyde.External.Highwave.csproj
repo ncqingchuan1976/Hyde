@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A64EE8CC-D239-4EDF-A39E-1E352741B81C}</ProjectGuid>
+    <ProjectGuid>{F8CC405A-04A0-4DC3-8156-415D24B49B29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hyde.External</RootNamespace>
-    <AssemblyName>Hyde.External</AssemblyName>
+    <RootNamespace>Hyde.External.Highwave</RootNamespace>
+    <AssemblyName>Hyde.External.Highwave</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IExternal.cs" />
-    <Compile Include="operateResult.cs" />
-    <Compile Include="operateState.cs" />
+    <Compile Include="HighwaveOp.cs" />
+    <Compile Include="IHighwave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hyde.External\Hyde.External.csproj">
+      <Project>{a64ee8cc-d239-4edf-a39e-1e352741b81c}</Project>
+      <Name>Hyde.External</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
