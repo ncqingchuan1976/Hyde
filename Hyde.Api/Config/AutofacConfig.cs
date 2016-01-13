@@ -9,6 +9,7 @@ using System.Web.Http;
 using Hyde.Api.Services;
 using Hyde.External.Sanfenqiu;
 using Hyde.External;
+using Hyde.External.Highwave;
 namespace Hyde.Api.Config
 {
     public class AutofacConfig
@@ -26,6 +27,7 @@ namespace Hyde.Api.Config
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType<SanfenqiuOp>().As<ISanfenqiu>().AsImplementedInterfaces();
+            builder.RegisterType<HighwaveOp>().As<IHighwave>().AsImplementedInterfaces();
             InitService(assembily.GetTypes(), builder);
 
             var container = builder.Build();

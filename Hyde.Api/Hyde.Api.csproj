@@ -91,6 +91,7 @@
     <Compile Include="Constraints\OptionalRegExConstraint.cs" />
     <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\HighwaveController.cs" />
     <Compile Include="Controllers\SanfenqiuController.cs" />
     <Compile Include="Controllers\SupplyController.cs" />
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
@@ -127,6 +128,10 @@
     <ProjectReference Include="..\Hyde.Domain\Hyde.Domain.csproj">
       <Project>{98832d1f-ac7a-4829-b33a-acf415c8ceac}</Project>
       <Name>Hyde.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.External.Highwave\Hyde.External.Highwave.csproj">
+      <Project>{f8cc405a-04a0-4dc3-8156-415d24b49b29}</Project>
+      <Name>Hyde.External.Highwave</Name>
     </ProjectReference>
     <ProjectReference Include="..\Hyde.External.Sanfenqiu\Hyde.External.Sanfenqiu.csproj">
       <Project>{4c9f31b5-70c5-4ac4-a857-52fdf911ed25}</Project>
