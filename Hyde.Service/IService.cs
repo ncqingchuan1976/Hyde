@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hyde.Service
 {
-    public interface IService 
+    public interface IService
     {
     }
 }
