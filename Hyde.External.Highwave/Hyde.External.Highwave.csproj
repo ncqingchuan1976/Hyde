@@ -56,6 +56,10 @@
       <Project>{a64ee8cc-d239-4edf-a39e-1e352741b81c}</Project>
       <Name>Hyde.External</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Hyde.Result\Hyde.Result.csproj">
+      <Project>{9cc3f2af-88eb-41d8-9aa5-e10189c9b346}</Project>
+      <Name>Hyde.Result</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

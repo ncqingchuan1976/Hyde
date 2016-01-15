@@ -14,7 +14,7 @@ namespace Hyde.Transfer
 
             var acc = service.GetAccessTocken("hk013", "123").Result;
 
-            if (acc.error == 0)
+            if (acc.err_code == 0)
             {
                 Console.WriteLine(acc.entity.access_token);
 

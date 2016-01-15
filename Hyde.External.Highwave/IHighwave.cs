@@ -4,14 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Hyde.External;
+using Hyde.Result.Operation;
 namespace Hyde.External.Highwave
 {
     public interface IHighwave : IExternal
     {
-        Task<operateResult<accessToken>> GetAccessTocken(string UserName, string PassWord);
+        Task<OperationResult<accessToken>> GetAccessTocken(string UserName, string PassWord);
 
-        Task<operateResult<PageResponse<highwaveproduct>>> GetHighwaveProduct(string apikey, string[] brands, DateTime start, DateTime? end = null, int pageIndex = 1, int pageSize = 20);
+        Task<OperationResult<PageResponse<highwaveproduct>>> GetHighwaveProduct(string apikey, string[] brands, DateTime start, DateTime? end = null, int pageIndex = 1, int pageSize = 20);
 
-        Task<operateResult<List<sku>>> GetHighwaveBarcode(string apikey,string[] productCodes);
+        Task<OperationResult<List<sku>>> GetHighwaveBarcode(string apikey,string[] productCodes);
     }
 }

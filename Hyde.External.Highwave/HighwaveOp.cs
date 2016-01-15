@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Net;
 using Newtonsoft.Json;
 using System.Configuration;
+using Hyde.Result.Operation;
 namespace Hyde.External.Highwave
 {
     public class HighwaveOp : IHighwave, IDisposable
@@ -23,7 +24,7 @@ namespace Hyde.External.Highwave
                 client.Dispose();
         }
 
-        public async Task<operateResult<accessToken>> GetAccessTocken(string UserName, string PassWord)
+        public async Task<OperationResult<accessToken>> GetAccessTocken(string UserName, string PassWord)
         {
             StringBuilder requestUrl = new StringBuilder(url + "/token");
 
@@ -43,17 +44,17 @@ namespace Hyde.External.Highwave
 
                 var err = JsonConvert.DeserializeObject<error_state>(Jsonerr);
 
-                return new operateResult<accessToken>() { error = -1, error_info = err.error + " " + err.error_description };
+                return new OperationResult<accessToken>() { err_code = ErrorEnum.sys_error, err_info = err.error + " " + err.error_description };
             }
 
             var Json = result.Content.ReadAsStringAsync().Result;
 
             var token = JsonConvert.DeserializeObject<accessToken>(Json);
 
-            return new operateResult<accessToken>() { error = 0, error_info = "success", entity = token };
+            return new OperationResult<accessToken>() { err_code = ErrorEnum.success, err_info = ErrorEnum.success.ToString(), entity = token };
         }
 
-        public async Task<operateResult<PageResponse<highwaveproduct>>> GetHighwaveProduct(string apikey, string[] brands, DateTime start, DateTime? end = null, int pageIndex = 1, int pageSize = 20)
+        public async Task<OperationResult<PageResponse<highwaveproduct>>> GetHighwaveProduct(string apikey, string[] brands, DateTime start, DateTime? end = null, int pageIndex = 1, int pageSize = 20)
         {
             string requestUrl = string.Format(url + @"/highwave/GetProduct?pageIndex={0}&pageSize={1}", pageIndex, pageSize);
 
@@ -65,14 +66,14 @@ namespace Hyde.External.Highwave
 
             var result = await client.PostAsync(requestUrl, postString);
 
-            var Json = result.Content.ReadAsStringAsync().Result;           
+            var Json = result.Content.ReadAsStringAsync().Result;
 
             PageResponse<highwaveproduct> product = JsonConvert.DeserializeObject<PageResponse<highwaveproduct>>(Json);
 
-            return new operateResult<PageResponse<highwaveproduct>>() { error = 0, error_info = "success", entity = product };
+            return new OperationResult<PageResponse<highwaveproduct>>() { err_code = ErrorEnum.success, err_info = ErrorEnum.success.ToString(), entity = product };
         }
 
-        public async Task<operateResult<List<sku>>> GetHighwaveBarcode(string apikey, string[] productCodes)
+        public async Task<OperationResult<List<sku>>> GetHighwaveBarcode(string apikey, string[] productCodes)
         {
             string requestUrl = url + @"/highwave/GetBarcode";
 
@@ -88,7 +89,7 @@ namespace Hyde.External.Highwave
 
             List<sku> product = JsonConvert.DeserializeObject<List<sku>>(Json);
 
-            return new operateResult<List<sku>>() { error = 0, error_info = "success", entity = product };
+            return new OperationResult<List<sku>>() { err_code = ErrorEnum.success, err_info = ErrorEnum.success.ToString(), entity = product };
 
         }
     }
