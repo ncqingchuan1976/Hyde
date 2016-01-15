@@ -12,7 +12,7 @@ namespace Hyde.External
 
         public string error_info { get; set; }
 
-        public T data { get; set; }
+        public T entity { get; set; }
     }
 
 }

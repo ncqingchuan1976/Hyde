@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F8CC405A-04A0-4DC3-8156-415D24B49B29}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{68353A44-505B-44DD-90A4-B11B8CF38496}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hyde.External.Highwave</RootNamespace>
-    <AssemblyName>Hyde.External.Highwave</AssemblyName>
+    <RootNamespace>Hyde.Transfer</RootNamespace>
+    <AssemblyName>Hyde.Transfer</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,12 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,20 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="accessToken.cs" />
-    <Compile Include="HighwaveOp.cs" />
-    <Compile Include="highwaveproduct.cs" />
-    <Compile Include="IHighwave.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Hyde.DbContext\Hyde.Context.csproj">
+      <Project>{4ba942a4-1901-4d5a-9734-e6ee6d93e167}</Project>
+      <Name>Hyde.Context</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.Domain\Hyde.Domain.csproj">
+      <Project>{98832d1f-ac7a-4829-b33a-acf415c8ceac}</Project>
+      <Name>Hyde.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.External.Highwave\Hyde.External.Highwave.csproj">
+      <Project>{f8cc405a-04a0-4dc3-8156-415d24b49b29}</Project>
+      <Name>Hyde.External.Highwave</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.External.Sanfenqiu\Hyde.External.Sanfenqiu.csproj">
+      <Project>{4c9f31b5-70c5-4ac4-a857-52fdf911ed25}</Project>
+      <Name>Hyde.External.Sanfenqiu</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Hyde.External\Hyde.External.csproj">
       <Project>{a64ee8cc-d239-4edf-a39e-1e352741b81c}</Project>
       <Name>Hyde.External</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\Hyde.Repository\Hyde.Repository.csproj">
+      <Project>{a152f4fb-f658-4b22-b985-39769679b312}</Project>
+      <Name>Hyde.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

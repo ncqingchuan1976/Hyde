@@ -33,7 +33,7 @@ namespace Hyde.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.system_err, result.error_info));
             }
-            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuArea>(errstate.success, errstate.success.ToString()) { Entity = result.data });
+            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuArea>(errstate.success, errstate.success.ToString()) { Entity = result.entity });
         }
         [HttpGet]
         public HttpResponseMessage GetProductList(PageCommand Page = null, string Product_ids = null, string Goods_Code = null, string Name = null, int? isPic = null, DateTime? StartDate = null)
@@ -55,9 +55,9 @@ namespace Hyde.Api.Controllers
                 {
                     PageIndex = page.PageIndex,
                     PageSize = page.PageSize,
-                    TotalItem = result.data.total,
-                    ToTalPage = (int)Math.Ceiling((((double)result.data.total / page.PageSize))),
-                    Entities = result.data.product_list
+                    TotalItem = result.entity.total,
+                    ToTalPage = (int)Math.Ceiling((((double)result.entity.total / page.PageSize))),
+                    Entities = result.entity.product_list
                 }
             });
         }
@@ -70,7 +70,7 @@ namespace Hyde.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.system_err, result.error_info));
             }
-            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuCatalogList>(errstate.success, errstate.success.ToString()) { Entity = result.data });
+            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuCatalogList>(errstate.success, errstate.success.ToString()) { Entity = result.entity });
         }
         [HttpGet]
         public HttpResponseMessage GetCatalog(int Key)
@@ -81,7 +81,7 @@ namespace Hyde.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.system_err, result.error_info));
             }
-            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuCatalog>(errstate.success, errstate.success.ToString()) { Entity = result.data });
+            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuCatalog>(errstate.success, errstate.success.ToString()) { Entity = result.entity });
         }
 
         [HttpGet]
@@ -93,7 +93,7 @@ namespace Hyde.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.system_err, result.error_info));
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuStock>(errstate.success, errstate.success.ToString()) { Entity = result.data });
+            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuStock>(errstate.success, errstate.success.ToString()) { Entity = result.entity });
         }
 
         [HttpGet]
@@ -114,9 +114,9 @@ namespace Hyde.Api.Controllers
                 {
                     PageIndex = page.PageIndex,
                     PageSize = page.PageSize,
-                    TotalItem = result.data.total,
-                    ToTalPage = (int)Math.Ceiling((((double)result.data.total / page.PageSize))),
-                    Entities = result.data.order_list
+                    TotalItem = result.entity.total,
+                    ToTalPage = (int)Math.Ceiling((((double)result.entity.total / page.PageSize))),
+                    Entities = result.entity.order_list
                 }
             });
 
@@ -136,7 +136,7 @@ namespace Hyde.Api.Controllers
                 return Request.CreateResponse(HttpStatusCode.BadRequest, new OperationResult(errstate.system_err, result.error_info));
             }
 
-            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuStockChange>(errstate.success, errstate.success.ToString()) { Entity = result.data });
+            return Request.CreateResponse(HttpStatusCode.OK, new OperationResult<responseSanfenqiuStockChange>(errstate.success, errstate.success.ToString()) { Entity = result.entity });
         }
     }
 }

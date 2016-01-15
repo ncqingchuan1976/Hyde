@@ -26,12 +26,14 @@ namespace Hyde.Api.Controllers
         {
             var result = await service.GetAccessTocken(userName, passWord);
 
-            if(result.error!=0)
+            if (result.error != 0)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
 
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+
     }
 }

@@ -47,6 +47,8 @@ namespace Hyde.Domain.Model
 
         public string description { get; set; }
 
+        public string imagemain { get; set; }
+
         public virtual List<productimageDto> images { get; set; }
 
         public brandDto brand { get; set; }

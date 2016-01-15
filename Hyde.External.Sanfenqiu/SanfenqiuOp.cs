@@ -43,7 +43,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuArea>(Json);
 
-            return new operateResult<responseSanfenqiuArea>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuArea>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuBrand> GetBrand(string sign, int brand_id)
@@ -63,7 +63,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuBrand>(Json);
 
-            return new operateResult<responseSanfenqiuBrand>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuBrand>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanenqiuBrandList> GetBrandList(string sign, string brand_ids)
@@ -84,7 +84,7 @@ namespace Hyde.External.Sanfenqiu
             var response = JsonConvert.DeserializeObject<responseSanenqiuBrandList>(Json);
 
 
-            return new operateResult<responseSanenqiuBrandList>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanenqiuBrandList>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuCatalog> GetCatalog(string sign, int cat_id)
@@ -109,7 +109,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuCatalog>(Json);
 
-            return new operateResult<responseSanfenqiuCatalog>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuCatalog>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuCatalogList> GetCatalogList(string sign, string cat_ids)
@@ -129,7 +129,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuCatalogList>(Json);
 
-            return new operateResult<responseSanfenqiuCatalogList>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuCatalogList>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuOrder> GetOrderList(string sign, int? page = default(int?), int? page_num = default(int?), string order_ids = null, string order_sns = null, string other_order_sn = null, string consignee = null, string mobile = null, int? fromtime = default(int?))
@@ -172,7 +172,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuOrder>(Json);
 
-            return new operateResult<responseSanfenqiuOrder>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuOrder>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuProduct> GetProductList(string sign, int? page = null, int? page_num = null, string product_ids = null, string goods_code = null, string name = null, int? is_pic = default(int?), string datebegin = null)
@@ -213,7 +213,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuProduct>(Json);
 
-            return new operateResult<responseSanfenqiuProduct>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuProduct>() { error = 0, error_info = "success", entity = response };
 
 
         }
@@ -235,7 +235,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuStock>(Json);
 
-            return new operateResult<responseSanfenqiuStock>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuStock>() { error = 0, error_info = "success", entity = response };
         }
 
         public operateResult<responseSanfenqiuStockChange> GetStockChange(string sign, string starttime = null, string endtime = null)
@@ -261,7 +261,7 @@ namespace Hyde.External.Sanfenqiu
 
             var response = JsonConvert.DeserializeObject<responseSanfenqiuStockChange>(Json);
 
-            return new operateResult<responseSanfenqiuStockChange>() { error = 0, error_info = "success", data = response };
+            return new operateResult<responseSanfenqiuStockChange>() { error = 0, error_info = "success", entity = response };
         }
     }
 }

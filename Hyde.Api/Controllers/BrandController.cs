@@ -19,7 +19,6 @@ namespace Hyde.Api.Controllers
     public class BrandController : ApiController
     {
         private readonly IBrandService _BrandService;
-
         public BrandController(IBrandService Service)
         {
             _BrandService = Service;
@@ -55,7 +54,6 @@ namespace Hyde.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, result);
             }
-
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 

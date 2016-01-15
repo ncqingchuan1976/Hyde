@@ -26,6 +26,10 @@ namespace Hyde.Context.Mapping
 
             this.Property(t => t.description).IsUnicode().HasMaxLength(255);
 
+            this.Property(t => t.imagemain).IsUnicode().HasMaxLength(255);
+
+            this.Property(t => t.createdate).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
             ToTable("product");
 
             HasRequired(t => t.brand).WithMany().HasForeignKey(t => t.brandid);
