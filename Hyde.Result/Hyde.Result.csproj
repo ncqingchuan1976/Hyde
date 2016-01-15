@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{98832D1F-AC7A-4829-B33A-ACF415C8CEAC}</ProjectGuid>
+    <ProjectGuid>{9CC3F2AF-88EB-41D8-9AA5-E10189C9B346}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Hyde.Domain</RootNamespace>
-    <AssemblyName>Hyde.Domain</AssemblyName>
+    <RootNamespace>Hyde.Result</RootNamespace>
+    <AssemblyName>Hyde.Result</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,33 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HydeEnum.cs" />
-    <Compile Include="Model\address.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="Model\areaDto.cs" />
-    <Compile Include="Model\brandDto.cs" />
-    <Compile Include="Model\categoryDto.cs" />
-    <Compile Include="Model\colorDto.cs" />
-    <Compile Include="Model\customerAddressDto.cs" />
-    <Compile Include="Model\customerDto.cs" />
-    <Compile Include="Model\genderDto.cs" />
-    <Compile Include="Model\orderdetailDto.cs" />
-    <Compile Include="Model\orderDto.cs" />
-    <Compile Include="Model\orderpayDto.cs" />
-    <Compile Include="Model\paymentDto.cs" />
-    <Compile Include="Model\productDto.cs" />
-    <Compile Include="Model\productimageDto.cs" />
-    <Compile Include="Model\rangeDto.cs" />
-    <Compile Include="Model\returnorderDto.cs" />
-    <Compile Include="Model\sizeDto.cs" />
-    <Compile Include="Model\skuDto.cs" />
-    <Compile Include="Model\stockDto.cs" />
-    <Compile Include="Model\supplyDto.cs" />
-    <Compile Include="Model\v_stockDto.cs" />
-    <Compile Include="Model\warehouseDto.cs" />
+    <Compile Include="Operation\ErrorEnum.cs" />
+    <Compile Include="Operation\OperationResult.cs" />
+    <Compile Include="Operation\PageResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

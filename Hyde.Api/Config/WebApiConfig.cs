@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Http;
 using Hyde.Api.Dispatcher;
 using Hyde.Api.Models.RequestCommands;
-using Hyde.Api.Services;
 using Hyde.Repository;
 namespace Hyde.Api.Config
 {

@@ -6,10 +6,11 @@ using Hyde.Repository;
 using Hyde.Context;
 using System.Reflection;
 using System.Web.Http;
-using Hyde.Api.Services;
+using Hyde.Service;
 using Hyde.External.Sanfenqiu;
 using Hyde.External;
 using Hyde.External.Highwave;
+
 namespace Hyde.Api.Config
 {
     public class AutofacConfig
@@ -28,7 +29,9 @@ namespace Hyde.Api.Config
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType<SanfenqiuOp>().As<ISanfenqiu>().AsImplementedInterfaces();
             builder.RegisterType<HighwaveOp>().As<IHighwave>().AsImplementedInterfaces();
-            InitService(assembily.GetTypes(), builder);
+            //业务类注册
+            builder.RegisterType<ProductService>().As<IProductService>().AsImplementedInterfaces();
+            //InitService(assembily.GetTypes(), builder);
 
             var container = builder.Build();
 
@@ -40,7 +43,8 @@ namespace Hyde.Api.Config
         /// <param name="types">当前程序集中的类型集合</param>
         /// <param name="builder">autofac构造器</param>
         private static void InitService(Type[] types, ContainerBuilder builder)
-        {
+        {          
+
             builder.RegisterTypes(types.Where(t => typeof(IService).IsAssignableFrom(t)).ToArray()).AsImplementedInterfaces().InstancePerLifetimeScope();
 
         }

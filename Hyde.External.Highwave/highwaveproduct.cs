@@ -18,9 +18,7 @@ namespace Hyde.External.Highwave
         public int PageSize { get; set; }
 
         public IEnumerable<T> Data { get; set; }
-    }
-
-   
+    }  
 
     public class highwaveproduct
     {

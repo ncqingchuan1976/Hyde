@@ -89,17 +89,10 @@
     <Compile Include="Config\SessionableControllerHandler.cs" />
     <Compile Include="Config\WebApiConfig.cs" />
     <Compile Include="Constraints\OptionalRegExConstraint.cs" />
-    <Compile Include="Controllers\BrandController.cs" />
-    <Compile Include="Controllers\FileController.cs" />
-    <Compile Include="Controllers\HighwaveController.cs" />
-    <Compile Include="Controllers\SanfenqiuController.cs" />
-    <Compile Include="Controllers\SupplyController.cs" />
     <Compile Include="Dispatcher\SupplyDispatcher.cs" />
     <Compile Include="Filters\EmptyParameterFilterAttribute.cs" />
     <Compile Include="Filters\InvalidModelStateFilterAttribute.cs" />
     <Compile Include="ModelBinders\UserBinder.cs" />
-    <Compile Include="Models\ResultModels\OperationResult.cs" />
-    <Compile Include="Models\ResultModels\PageResult.cs" />
     <Compile Include="Models\RequestModels\Brand.cs" />
     <Compile Include="Models\RequestModels\Supply.cs" />
     <Compile Include="Validation\MaximumAttribute.cs" />
@@ -107,11 +100,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\RequestCommands\IRequestCommand.cs" />
     <Compile Include="Models\RequestCommands\PageCommand.cs" />
-    <Compile Include="Services\BrandService.cs" />
-    <Compile Include="Services\IBrandService.cs" />
-    <Compile Include="Services\IService.cs" />
-    <Compile Include="Services\ISupplyService.cs" />
-    <Compile Include="Services\SupplyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -119,6 +107,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_File\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hyde.DbContext\Hyde.Context.csproj">
@@ -144,6 +133,14 @@
     <ProjectReference Include="..\Hyde.Repository\Hyde.Repository.csproj">
       <Project>{a152f4fb-f658-4b22-b985-39769679b312}</Project>
       <Name>Hyde.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.Result\Hyde.Result.csproj">
+      <Project>{9cc3f2af-88eb-41d8-9aa5-e10189c9b346}</Project>
+      <Name>Hyde.Result</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Hyde.Service\Hyde.Service.csproj">
+      <Project>{670fd51b-7d33-4cb3-bdee-4d8325863b30}</Project>
+      <Name>Hyde.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

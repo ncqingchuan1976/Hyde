@@ -65,9 +65,7 @@ namespace Hyde.External.Highwave
 
             var result = await client.PostAsync(requestUrl, postString);
 
-            var Json = result.Content.ReadAsStringAsync().Result;
-
-           
+            var Json = result.Content.ReadAsStringAsync().Result;           
 
             PageResponse<highwaveproduct> product = JsonConvert.DeserializeObject<PageResponse<highwaveproduct>>(Json);
 

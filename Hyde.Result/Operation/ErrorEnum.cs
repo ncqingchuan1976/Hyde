@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hyde.Api.Services
+namespace Hyde.Result.Operation
 {
-    public interface IService
+    public enum ErrorEnum
     {
+        sys_error = -1,
+        success = 0
     }
 }

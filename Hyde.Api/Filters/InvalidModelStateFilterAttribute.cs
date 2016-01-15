@@ -7,7 +7,6 @@ using System.Web;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using System.Web.Http.ModelBinding;
-using Hyde.Api.Models.ResultModels;
 namespace Hyde.Api.Filters
 {
     /// <summary>
