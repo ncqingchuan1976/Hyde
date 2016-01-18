@@ -150,7 +150,9 @@ namespace Hyde.External.Highwave
 
         public async Task<OperationResult<List<brand>>> GetHighwaveBrand(string accessToken)
         {
-            string requestUrl = url + @"/highwave/GetBrand";
+            string requestUrl = url + @"/highwave/GetBrand"; 
+
+
 
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(authorizationScheam, accessToken);
 
