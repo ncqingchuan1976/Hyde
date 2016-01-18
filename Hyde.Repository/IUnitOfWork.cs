@@ -22,6 +22,9 @@ namespace Hyde.Repository
         /// </summary>
         /// <returns>返回受影响的行数</returns>
         int Save();
+
+        Task<int> SaveAsync();
+
         /// <summary>
         /// 回滚事务
         /// </summary>

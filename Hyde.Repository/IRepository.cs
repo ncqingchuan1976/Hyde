@@ -49,12 +49,10 @@ namespace Hyde.Repository
         /// </summary>
         /// <param name="items">需要移除的实体</param>
         void Remove(IEnumerable<T> items);
-
         /// <summary>
         /// 创建一个实体
         /// </summary>
-        /// <param name="item">返回创建成功的实体</param>
-        /// <returns></returns>
+        /// <returns>返回创建的实体类型</returns>
         T Create();
         /// <summary>
         /// 根据主键查询并返回查询到的实体

@@ -4,25 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hyde.External.Highwave
+namespace Hyde.External.Highwave.Models
 {
-
-    public class PageResponse<T>
+    public class product
     {
-        public int PageIndex { get; set; }
-
-        public int TotalItem { get; set; }
-
-        public int TotalPage { get; set; }
-
-        public int PageSize { get; set; }
-
-        public IEnumerable<T> Data { get; set; }
-    }  
-
-    public class highwaveproduct
-    {
-        public highwaveproduct()
+        public product()
         {
             skus = new List<sku>();
         }

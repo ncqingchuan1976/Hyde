@@ -10,8 +10,9 @@ namespace Hyde.Service
 {
     public interface IProductService : IService
     {
-        Task<OperationResult<List<productDto>>> GetProductList(string[] productcodes);
+        Task<OperationResult<List<productDto>>> GetProductListAsync(string[] productcodes);
 
+        Task<OperationResult> AddProductAsync(List<productDto> items);
 
     }
 }

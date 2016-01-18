@@ -45,11 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="accessToken.cs" />
+    <Compile Include="Models\accessToken.cs" />
+    <Compile Include="Models\highwavebrand.cs" />
+    <Compile Include="Models\highwavecategory.cs" />
     <Compile Include="HighwaveOp.cs" />
-    <Compile Include="highwaveproduct.cs" />
+    <Compile Include="Models\highwaveproduct.cs" />
     <Compile Include="IHighwave.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\highwavesex.cs" />
+    <Compile Include="Models\highwavesizeclass.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hyde.External\Hyde.External.csproj">

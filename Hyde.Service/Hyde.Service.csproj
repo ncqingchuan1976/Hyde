@@ -49,9 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="interfaces\BrandService.cs" />
+    <Compile Include="interfaces\CategoryService.cs" />
+    <Compile Include="interfaces\GenderService.cs" />
+    <Compile Include="interfaces\IBrandService.cs" />
+    <Compile Include="interfaces\ICategroyService.cs" />
+    <Compile Include="interfaces\IGenderService.cs" />
     <Compile Include="interfaces\IProductService.cs" />
+    <Compile Include="interfaces\ISizeService.cs" />
+    <Compile Include="interfaces\SizeService.cs" />
     <Compile Include="IService.cs" />
-    <Compile Include="ProductService.cs" />
+    <Compile Include="interfaces\ProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

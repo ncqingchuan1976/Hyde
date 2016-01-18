@@ -19,7 +19,7 @@ namespace Hyde.Service
             productRepo = unitOfwork.GetRepository<productDto>();
         }
 
-        public async Task<OperationResult<List<productDto>>> GetProductList(string[] productcodes)
+        public async Task<OperationResult<List<productDto>>> GetProductListAsync(string[] productcodes)
         {
             try
             {
@@ -31,6 +31,13 @@ namespace Hyde.Service
             {
                 return new OperationResult<List<productDto>>() { err_code = ErrorEnum.sys_error, err_info = ex.Message };
             }
+        }
+
+        public async Task<OperationResult> AddProductAsync(List<productDto> items)
+        {
+            productRepo.Add(items);
+            await unitOfwork.SaveAsync();
+            return new OperationResult() { err_code = ErrorEnum.success, err_info = ErrorEnum.success.ToString() };
         }
     }
 }

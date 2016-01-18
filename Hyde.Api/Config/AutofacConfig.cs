@@ -30,8 +30,10 @@ namespace Hyde.Api.Config
             builder.RegisterType<SanfenqiuOp>().As<ISanfenqiu>().AsImplementedInterfaces();
             builder.RegisterType<HighwaveOp>().As<IHighwave>().AsImplementedInterfaces();
             //业务类注册
-            builder.RegisterType<ProductService>().As<IProductService>().AsImplementedInterfaces();
-            //InitService(assembily.GetTypes(), builder);
+
+            var serviceassembily = new Assembly[] { typeof(IService).Assembly };
+            var baseType = typeof(IService);
+            builder.RegisterAssemblyTypes(serviceassembily).Where(t => baseType.IsAssignableFrom(t) && t != baseType).AsImplementedInterfaces();
 
             var container = builder.Build();
 

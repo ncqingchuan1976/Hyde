@@ -65,7 +65,13 @@ namespace Hyde.Repository
 
         public int Save()
         {
+
             return _dbcontext.SaveChanges();
+        }
+
+        public async Task<int> SaveAsync()
+        {
+            return await _dbcontext.SaveChangesAsync();
         }
     }
 }
