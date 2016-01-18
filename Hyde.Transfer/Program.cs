@@ -12,46 +12,19 @@ using System.Data.Entity;
 using Hyde.Service;
 using Hyde.External.Highwave.Models;
 using Hyde.Domain.Model;
+using Hyde.External.Sanfenqiu;
+using System.Configuration;
 namespace Hyde.Transfer
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var dal = GetProvider<IHighwave>();
+            string apikey = ConfigurationManager.AppSettings["apikey"];
 
-            var result = dal.GetAccessTocken("hk013", "123").Result;
+            var DAL = GetProvider<ISanfenqiu>();
 
-            string acc = result.entity.access_token;
-
-
-            var list = dal.GetHighwaveCategory(acc).Result.entity;
-
-            var dal1 = GetProvider<ICategroyService>();
-
-            var list1 = dal1.GetCategoryAsync().Result.entity;
-
-
-            var query = list.GroupJoin(list1, l => new
-            {
-                code = l.Category
-            },
-                r => new
-                {
-                    code = r.name
-                }, (l, r) => new
-                {
-                    l,
-                    r
-                }).SelectMany(l => l.r.DefaultIfEmpty(), (l, r) => new { l, r }).Where(t => t.r == null).Select(t => new categoryDto()
-                {
-                    name = t.l.l.Category
-
-                });
-
-            dal1.AddCategoryAsync(query.ToList()).ContinueWith(t => { Console.WriteLine(t.Result.err_info); });
-
-            Console.WriteLine(result.entity.access_token);
+            var stock = DAL.GetStock(apikey, 338679);
 
             Console.ReadLine();
         }
@@ -63,10 +36,7 @@ namespace Hyde.Transfer
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType<HighwaveOp>().As<IHighwave>().AsImplementedInterfaces();
-            var assemblies = new Assembly[] { typeof(IService).Assembly };
-            var baseType = typeof(IService);
-
-            builder.RegisterAssemblyTypes(assemblies).Where(t => baseType.IsAssignableFrom(t) && t != baseType).AsImplementedInterfaces();
+            builder.RegisterType<SanfenqiuOp>().As<ISanfenqiu>().AsImplementedInterfaces();
             var container = builder.Build();
 
             return container.Resolve<T>();

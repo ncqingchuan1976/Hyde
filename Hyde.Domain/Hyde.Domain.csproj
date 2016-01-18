@@ -58,6 +58,7 @@
     <Compile Include="Model\productimageDto.cs" />
     <Compile Include="Model\rangeDto.cs" />
     <Compile Include="Model\returnorderDto.cs" />
+    <Compile Include="Model\SanfenqiuproductDto.cs" />
     <Compile Include="Model\sizeDto.cs" />
     <Compile Include="Model\skuDto.cs" />
     <Compile Include="Model\stockDto.cs" />

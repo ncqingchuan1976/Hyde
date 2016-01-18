@@ -35,6 +35,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,13 +48,13 @@
     <Compile Include="ISanfenqiu.cs" />
     <Compile Include="operateState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="sanfenqiuarea.cs" />
-    <Compile Include="sanfenqiubrand.cs" />
-    <Compile Include="sanfenqiucatalog.cs" />
+    <Compile Include="Models\sanfenqiuarea.cs" />
+    <Compile Include="Models\sanfenqiubrand.cs" />
+    <Compile Include="Models\sanfenqiucatalog.cs" />
     <Compile Include="SanfenqiuOp.cs" />
-    <Compile Include="sanfenqiuorder.cs" />
-    <Compile Include="sanfenqiuproduct.cs" />
-    <Compile Include="sanfenqiustock.cs" />
+    <Compile Include="Models\sanfenqiuorder.cs" />
+    <Compile Include="Models\sanfenqiuproduct.cs" />
+    <Compile Include="Models\sanfenqiustock.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hyde.External\Hyde.External.csproj">

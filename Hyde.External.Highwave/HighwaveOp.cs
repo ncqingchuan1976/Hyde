@@ -16,7 +16,7 @@ namespace Hyde.External.Highwave
     {
         private HttpClient client = new HttpClient();
         private const string grant_type = "password";
-        private readonly string url = ConfigurationManager.AppSettings["Url"];
+        private readonly string url = ConfigurationManager.AppSettings["HighwaveUrl"];
         private const string contentType = "Application/Json";
         private const string authorizationScheam = "Bearer";
         public void Dispose()
