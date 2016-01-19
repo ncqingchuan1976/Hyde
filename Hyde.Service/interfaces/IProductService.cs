@@ -12,7 +12,7 @@ namespace Hyde.Service
     {
         Task<OperationResult<List<productDto>>> GetProductListAsync(string[] productcodes);
 
-        Task<OperationResult> AddProductAsync(List<productDto> items);
+        Task<OperationResult> AddProductAsync(IEnumerable<productDto> items);
 
     }
 }

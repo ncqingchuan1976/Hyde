@@ -33,7 +33,7 @@ namespace Hyde.Service
             }
         }
 
-        public async Task<OperationResult> AddProductAsync(List<productDto> items)
+        public async Task<OperationResult> AddProductAsync(IEnumerable<productDto> items)
         {
             productRepo.Add(items);
             await unitOfwork.SaveAsync();
