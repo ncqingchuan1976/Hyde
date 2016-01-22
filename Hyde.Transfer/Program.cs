@@ -24,7 +24,7 @@ namespace Hyde.Transfer
 
             var DAL = GetProvider<ISanfenqiu>();
 
-            //var stock = DAL.GetStock(apikey, 338679); 
+            var stock = DAL.GetStock(apikey, 1338679);   
 
             Console.ReadLine();
         }
